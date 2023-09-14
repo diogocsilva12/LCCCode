@@ -23,4 +23,4 @@ max2 a b | a > b = a
 
 max3 :: Int -> Int -> Int -> Int
 max3 a b c | max2 a b > c = max2 a b
-           | otherwise    = c 
+           | otherwise    = c
