@@ -6,3 +6,16 @@ Bool (valores lógicos) -> True, False...
 ```
 print(2)
 ```
+[Youtube](https://youtube.com)
+
+
+```
+# Isto* está formatado como código*
+```
+
+
+⚓
+
+
+
+Str (strings, conjunto de carateres) -> "Ines", "Diogo" ,"D",...
