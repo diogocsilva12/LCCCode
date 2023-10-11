@@ -1,4 +1,4 @@
-**Exerício 1**
+**Exercício 1**
 1. Indique como é que o interpretador de Haskell avalia as expressoes das alıneas que se seguem, apresentando a cadeia de reducao de cada uma dessas expressoes (i.e., os varios passos intermedios ate se chegar ao valor final).
 
 a) Considere a seguinte definicao:
