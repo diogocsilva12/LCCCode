@@ -23,3 +23,25 @@ myfind (x:xs) n = myfind xs (n-1)
 myreverse :: [a] -> [a]
 myreverse [] = []
 myreverse (x:xs) =  myreverse xs ++ [x]
+
+
+--6 Take que dado um inteiro n e uma lista l calcula a lista com os n primeiros elementos de l.
+myTake :: Int -> [a] -> [a] 
+myTake 0 _ = []
+myTake _ [] = []
+myTake n (x:xs) = x : myTake (n-1) xs
+
+--7 drop que dado um inteiro n e uma lista l calcula a lista sem os n primeiros elementos de l
+
+myDrop :: Int -> [a] -> [a]
+myDrop 0 xs = xs
+myDrop _ [] = []
+myDrop n (x:xs) = myDrop (n-1) xs
+
+--8 zip que constroi a lista de pares a partir de duas listas
+myzip :: [a] -> [b] -> [(a,b)]
+myzip [] _ = []
+myzip _ [] = []
+myzip (x:xs) (y:ys) = (x, y) : myzip xs ys
+
+--9 Definição recursiva da função replicate que dado um inteiro n e um elemento x constroi uma lista com n elementos, todos iguais a x.Applicative
