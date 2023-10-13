@@ -45,3 +45,45 @@ myzip _ [] = []
 myzip (x:xs) (y:ys) = (x, y) : myzip xs ys
 
 --9 Definição recursiva da função replicate que dado um inteiro n e um elemento x constroi uma lista com n elementos, todos iguais a x.Applicative
+
+myreplicate :: Int -> a -> [a]
+myreplicate 0 _ = []
+myreplicate n x = x : myreplicate (n-1) x
+
+--10 Definição recursiva de intersperse que dado um elemento e uma lista, constrói uma lista em que o elemento fornecido é intercalado entre os elementos de uma lista fornecida.
+
+myinter :: a -> [a] -> [a]
+myinter _ [] = []
+myinter n [x] = [x]
+myinter n (x:xs) = x : n : myinter n xs
+
+--11 group :: Eq a => [a] -> [[a]] que agrupa elementos iguais e consecutivos de uma lista
+--dificial
+--mygroup :: Eq a => [a] -> [[a]]
+--mygroup [] = [[]]
+--mygroup (x:xs) | x == xs = x:xs: mygroup xs
+--               | otherwise = [x] : mygroup xs
+               
+--12 concat apresenta uma definição recursiva que concatena as listas de uma lista
+myconcat :: [[a]] -> [a]
+myconcat [] = []
+myconcat ((x:xs):ys) = x : myconcat (xs:ys)
+
+--13 inits que calcula a lista dos prefixos de uma lista
+
+inits :: [a] -> [[a]]
+inits [] = [[]]
+inits (x:xs) = [] : map (x:) (inits xs)
+
+--14 apresente uma definição recursiva da função tails que calcula a lista dos prefixos de uma lista
+
+tails :: [a] -> [[a]]
+tails [] = [[]]
+tails (x:xs) = (x:xs) : tails xs
+
+--15 heads que recebe uma lista e produz a lista com o primeiro elemento de cada lista
+
+heads :: [[a]] -> [a]
+heads [] = []
+heads ([]:ys) = heads ys
+heads ((x:xs):ys) = x : heads ys 
