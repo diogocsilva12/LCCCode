@@ -1,4 +1,6 @@
 --1 Apresentar uma definição recursiva da função enumFromTo :: Int -> Int -> [Int] que constroi a lista dos números inteiros compreendidos entre dois limites .
+{-# OPTIONS_GHC -Wno-unrecognised-pragmas #-}
+{-# HLINT ignore "Use foldr" #-}
 myEnumFromTo :: Int -> Int -> [Int]
 myEnumFromTo x y | x > y = []
                  | otherwise = x : myEnumFromTo (x+1) y
