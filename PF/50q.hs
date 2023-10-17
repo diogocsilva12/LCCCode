@@ -73,7 +73,7 @@ myconcat ((x:xs):ys) = x : myconcat (xs:ys)
 
 inits :: [a] -> [[a]]
 inits [] = [[]]
-inits (x:xs) = [] : map (x:) (inits xs)
+inits l = inits (init l) ++ [l]
 
 --14 apresente uma definição recursiva da função tails que calcula a lista dos prefixos de uma lista
 
@@ -87,3 +87,55 @@ heads :: [[a]] -> [a]
 heads [] = []
 heads ([]:ys) = heads ys
 heads ((x:xs):ys) = x : heads ys 
+
+--16 total que recebe uma lista de listas e conta o total de elementos
+
+total :: [[a]] -> Int
+total [[]] = 0
+total ([]:ys) = total ys
+total ((x:xs):ys) = 1 + total (xs:ys)
+
+--17 fun que recebe uma lista de triplo e produz a lista de pares com o primeiro e o terceiro elemento de cada triplo.
+
+fun ::[(a,b,c)] -> [(a,c)]
+fun [] = []
+fun ((x,y,z):ys) = (x,z) : fun ys
+
+--18. Defina a funcao cola :: [(String,b,c)] -> String que recebe uma lista de triplos e concatena as strings que estao na primeira componente dos triplos.
+
+cola :: [(String,b,c)] -> String
+cola [] = ""
+cola ((s,y,z):ys) = s ++ cola ys 
+
+{-19. Defina a funcao idade :: Int -> Int -> [(String,Int)] -> [String] que recebe o ano,
+a idade e uma lista de pares com o nome e o ano de nascimento de cada pessoa, e devolve a
+listas de nomes das pessoas que nesse ano atingirao ou ja ultrapassaram a idade indicada.
+Por exemplo, idade 2021 26 [("rui",1995), ("maria",2009), ("ana",1947)] corresponde
+a ["rui","ana"].
+-}
+
+idade :: Int -> Int -> [(String,Int)] -> [String]
+idade _ _ [] = []
+idade ano idademin ((n,a):xs) | ano - a >= idademin = n : idade ano idademin xs
+                              | otherwise = idade ano idademin xs
+
+{-20. Apresente uma definicao recursiva da funcao,
+powerEnumFrom :: Int -> Int -> [Int]
+que dado um valor n e um valor m constroi a lista [n^0, . . . , n^m−1].
+-}
+
+powerEnumFrom :: Int -> Int -> [Int]
+powerEnumFrom n 1 = [1]
+powerEnumFrom n m
+    | m > 1 = powerEnumFrom n (m - 1) ++ [n^(m-1)]
+    | otherwise = []
+
+--21 isPrime :: Int -> Bool que dado um int maior ou igual que 2 determina se o número é primo.
+isPrime :: Int -> Bool
+isPrime n = n >= 2 && isPrimeCheck n 2
+
+isPrimeCheck :: Int -> Int -> Bool
+isPrimeCheck n m |m*m > n = True
+                 |mod n m == 0 = False
+                 |otherwise = isPrimeCheck n (m+1)
+
