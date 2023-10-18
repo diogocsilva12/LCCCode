@@ -1,6 +1,4 @@
 --1 Apresentar uma definição recursiva da função enumFromTo :: Int -> Int -> [Int] que constroi a lista dos números inteiros compreendidos entre dois limites .
-{-# OPTIONS_GHC -Wno-unrecognised-pragmas #-}
-{-# HLINT ignore "Use foldr" #-}
 myEnumFromTo :: Int -> Int -> [Int]
 myEnumFromTo x y | x > y = []
                  | otherwise = x : myEnumFromTo (x+1) y
@@ -14,7 +12,7 @@ myEnumFromThenTo x y z | x > y = []
 --3 Definição recursiva de (++) que concatena duas listas
 myconc :: [a] -> [a] -> [a]
 myconc [] l = l
-myconc (x:xs) l = x : myconc xs l 
+myconc (x:xs) l = x : myconc xs l
 
 --4 Definição recursiva de (!!) que dada uma lista e um inteiro, calcula o elemento da lista que se encontra nessa posição 
 myfind :: [a] -> Int -> a
@@ -28,7 +26,7 @@ myreverse (x:xs) =  myreverse xs ++ [x]
 
 
 --6 Take que dado um inteiro n e uma lista l calcula a lista com os n primeiros elementos de l.
-myTake :: Int -> [a] -> [a] 
+myTake :: Int -> [a] -> [a]
 myTake 0 _ = []
 myTake _ [] = []
 myTake n (x:xs) = x : myTake (n-1) xs
@@ -65,7 +63,7 @@ myinter n (x:xs) = x : n : myinter n xs
 --mygroup [] = [[]]
 --mygroup (x:xs) | x == xs = x:xs: mygroup xs
 --               | otherwise = [x] : mygroup xs
-               
+
 --12 concat apresenta uma definição recursiva que concatena as listas de uma lista
 myconcat :: [[a]] -> [a]
 myconcat [] = []
@@ -88,7 +86,7 @@ tails (x:xs) = (x:xs) : tails xs
 heads :: [[a]] -> [a]
 heads [] = []
 heads ([]:ys) = heads ys
-heads ((x:xs):ys) = x : heads ys 
+heads ((x:xs):ys) = x : heads ys
 
 --16 total que recebe uma lista de listas e conta o total de elementos
 
@@ -107,7 +105,7 @@ fun ((x,y,z):ys) = (x,z) : fun ys
 
 cola :: [(String,b,c)] -> String
 cola [] = ""
-cola ((s,y,z):ys) = s ++ cola ys 
+cola ((s,y,z):ys) = s ++ cola ys
 
 {-19. Defina a funcao idade :: Int -> Int -> [(String,Int)] -> [String] que recebe o ano,
 a idade e uma lista de pares com o nome e o ano de nascimento de cada pessoa, e devolve a
@@ -126,7 +124,7 @@ powerEnumFrom :: Int -> Int -> [Int]
 que dado um valor n e um valor m constroi a lista [n^0, . . . , n^m−1].
 -}
 
-powerEnumFrom :: Int -> Int -> [Int]
+powerEnumFrom :: Int -> Int -> [Int]    --TENTAR DECORAR ESTA
 powerEnumFrom n 1 = [1]
 powerEnumFrom n m
     | m > 1 = powerEnumFrom n (m - 1) ++ [n^(m-1)]
@@ -141,3 +139,24 @@ isPrimeCheck n m |m*m > n = True
                  |mod n m == 0 = False
                  |otherwise = isPrimeCheck n (m+1)
 
+
+--22 isPrefix que testa se uma lista é prefixo de outra 
+isPrefixOf :: Eq a => [a] -> [a] -> Bool
+isPrefixOf [] _ = True
+isPrefixOf (x:xs) (y:ys) | x == y = isPrefixOf xs ys
+                         | otherwise = False
+
+--23 isSuffix que testa se uma lista é sufixo de outra  TENTAR DECORAR ESTA
+isSuffixOf :: Eq a => [a] -> [a] -> Bool
+isSuffixOf [] _ = True
+isSuffixOf (_:_) [] = False
+isSuffixOf xs ys = (last xs == last ys) && isSuffixOf (init xs) (init ys)
+
+--24 
+
+--25
+elemIndices :: Eq a => a -> [a] -> [Int]
+elemIndices _ [] = []
+elemIndices x (h:t)
+    | x == h = 0 : map (+1) (elemIndices x t)
+    | otherwise = map (+1) (elemIndices x t)
