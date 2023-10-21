@@ -160,3 +160,110 @@ elemIndices _ [] = []
 elemIndices x (h:t)
     | x == h = 0 : map (+1) (elemIndices x t)
     | otherwise = map (+1) (elemIndices x t)
+
+--26
+{-6. Apresente uma definicao recursiva da funcao (pre-definida) nub :: Eq a => [a] -> [a] que
+calcula uma lista com os mesmos elementos da recebida, sem repeticoes.
+Por exemplo, nub [1,2,1,2,3,1,2] corresponde a [1,2,3].-}
+
+mynub :: Eq a => [a] -> [a]
+mynub [] = []
+mynub (x:xs) | x `elem` xs = mynub xs
+             | otherwise = x : mynub xs
+
+--27 
+{- Apresente uma definicao recursiva da funcao (pre-definida) delete :: Eq a => a -> [a]-> [a] que retorna a lista resultante de remover (a primeira ocorrencia de) um dado elemento
+de uma lista.
+Por exemplo, delete 2 [1,2,1,2,3,1,2] corresponde a [1,1,2,3,1,2]. Se nao existir nenhuma ocorrencia a funcao devera retornar a lista recebida-}
+
+mydelete :: Eq a => a -> [a] -> [a]
+mydelete n [] = []
+mydelete n (x:xs) | n == x = xs
+                  | otherwise = x: mydelete n xs
+
+
+{-28. Apresente uma definicao recursiva da funcao (pre-definida) (\\):: Eq a => [a] -> [a] -> [a] que retorna a lista resultante de remover (as primeiras ocorrˆencias) dos elementos da
+segunda lista da primeira.
+Por exemplo, (\\)[1,2,3,4,5,1] [1,5] corresponde a [2,3,4,1].-}
+
+mytracos :: Eq a => [a] -> [a] -> [a]
+mytracos [] _ = []
+mytracos l1 [] = l1
+mytracos l1 (y:ys) = mytracos (mydelete y l1) ys
+
+{-29
+Apresente uma definicao recursiva da funcao (pre-definida) union :: Eq a => [a] -> [a] -> [a] que retorna a lista resultante de acrescentar `a primeira lista os elementos da segunda
+que nao ocorrem na primeira.
+Por exemplo, union [1,1,2,3,4] [1,5] corresponde a [1,1,2,3,4,5].
+-}
+
+myunion :: Eq a => [a] -> [a] -> [a]
+myunion [] l = l
+myunion l [] = l
+myunion l (x:xs) | x `elem` l = myunion l xs
+                 | otherwise = myunion (l ++ [x]) xs
+
+{-30. Apresente uma definicao recursiva da funcao (pre-definida) intersect :: Eq a => [a] -> [a] -> [a] que retorna a lista resultante de remover da primeira lista os elementos que nao
+pertencem a segunda.
+Por exemplo, intersect [1,1,2,3,4] [1,3,5] corresponde a [1,1,3].-}
+
+myintersect :: Eq a => [a] -> [a] -> [a]
+myintersect [] l = []
+myintersect l [] = l
+myintersect (x:xs) l2 | x `elem` l2 = x:myintersect xs l2 
+                      | otherwise = myintersect xs l2
+
+{-31. Apresente uma definicao recursiva da funcao (pre-definida) insert :: Ord a => a -> [a]-> [a] que dado um elemento e uma lista ordenada retorna a lista resultante de inserir
+ordenadamente esse elemento na lista.
+Por exemplo, insert 25 [1,20,30,40] corresponde a [1,20,25,30,40]-}
+
+myinsert :: Ord a => a -> [a]-> [a]
+myinsert n [] = [n]
+myinsert n (x:xs) | n <= x = n:x:xs
+                  | otherwise = x: myinsert n xs
+
+{-32. Apresente uma definicao recursiva da funcao (pre-definida) unwords :: [String] -> String que junta todas as strings da lista numa so, separando-as por um espaco.
+Por exemplo, unwords ["Programacao", "Funcional"] corresponde a "Programacao Funcional".-}
+
+myunwords :: [String] -> String
+myunwords [] = ""
+myunwords (x:xs) = x ++ " " ++ myunwords xs
+
+{-33 Apresente uma definicao recursiva da funcao (pre-definida) unlines :: [String] -> String que junta todas as strings da lista numa so, separando-as pelo caracter ’\n’.
+Por exemplo, unlines ["Prog", "Func"] corresponde a "Prog\nFunc\n".-}
+
+myunlines :: [String] -> String
+myunlines [] = ""
+myunlines (x:xs) = x ++ "\n" ++ myunlines xs
+
+{-34. Apresente uma definicao recursiva da funcao pMaior :: Ord a => [a] -> Int que dada uma lista nao vazia, retorna a posicao onde se encontra o maior elemento da lista. As posi¸c˜oes
+da lista comecam em 0, i.e., a funcao devera retornar 0 se o primeiro elemento da lista for o maior. !! DECORAR -}
+
+
+pMaior :: Ord a => [a] -> Int
+pMaior [_] = 0
+pMaior (h:t)
+    | h >= (t !! x) = 0
+    | otherwise = 1 + x
+    where x = pMaior t
+
+{-35. Apresente uma definicao recursiva da funcao (pre-definida) lookup :: Eq a => a -> [(a,b)] -> Maybe b que retorna uma lista constru´ıda a partir de elementos de uma lista (o segundo
+argumento) atendendo a uma condicao dada pelo primeiro argumento.
+Por exemplo, lookup ’a’ [(’a’,1),(’b’,4),(’c’,5)] corresponde a lista Just 1.-}
+
+mylookup :: Eq a => a -> [(a,b)] -> Maybe b
+mylookup n [] = Nothing
+mylookup n ((x,xs):ys) | n == x = Just xs
+                       | otherwise = mylookup n ys
+
+{-36 Defina a funcao preCrescente :: Ord a => [a] -> [a] calcula o maior prefixo crescente de uma lista.
+Por exemplo, preCrescente [3,7,9,6,10,22] corresponde a [3,7,9].-}
+preCrescente :: Ord a => [a] -> [a]
+preCrescente [] = []
+preCrescente (x:y:xs) | x <= y = x : preCrescente (y:xs)
+                      | otherwise = [x]
+
+{-37. Apresente uma definicao recursiva da funcao iSort :: Ord a => [a] -> [a] que calcula
+o resultado de ordenar uma lista. Assuma, se precisar, que existe definida a funcao insert
+:: Ord a => a -> [a] -> [a] que dado um elemento e uma lista ordenada retorna a lista
+resultante de inserir ordenadamente esse elemento na lista.-}
