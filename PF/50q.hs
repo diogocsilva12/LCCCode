@@ -210,7 +210,7 @@ Por exemplo, intersect [1,1,2,3,4] [1,3,5] corresponde a [1,1,3].-}
 myintersect :: Eq a => [a] -> [a] -> [a]
 myintersect [] l = []
 myintersect l [] = l
-myintersect (x:xs) l2 | x `elem` l2 = x:myintersect xs l2 
+myintersect (x:xs) l2 | x `elem` l2 = x:myintersect xs l2
                       | otherwise = myintersect xs l2
 
 {-31. Apresente uma definicao recursiva da funcao (pre-definida) insert :: Ord a => a -> [a]-> [a] que dado um elemento e uma lista ordenada retorna a lista resultante de inserir
@@ -267,3 +267,98 @@ preCrescente (x:y:xs) | x <= y = x : preCrescente (y:xs)
 o resultado de ordenar uma lista. Assuma, se precisar, que existe definida a funcao insert
 :: Ord a => a -> [a] -> [a] que dado um elemento e uma lista ordenada retorna a lista
 resultante de inserir ordenadamente esse elemento na lista.-}
+
+iSort :: Ord a => [a] -> [a]
+iSort [] = []
+iSort (x:xs) = myinsert x (iSort xs)
+
+{-
+38. Apresente uma definicao recursiva da funcao menor :: String -> String -> Bool que
+dadas duas strings, retorna True se e so se a primeira for menor do que a segunda, segundo
+a ordem lexicografica (i.e., do dicionario)
+Por exemplo, menor "sai" "saiu" corresponde a True enquanto que menor "programacao"
+"funcional" corresponde a False.
+-}
+--isto não faz comparar lexiografica mas sim comparação por tamanho de strings
+menor :: String -> String -> Bool
+menor "" s2 = True
+menor s1 "" = False
+menor s1 s2 | length s1 < length s2 = True
+            | otherwise = False
+
+
+-- podemos comparar chars em ordem lexiografica se usarmos < ou >.
+menor2 :: String -> String -> Bool
+menor2 "" s2 = True
+menor2 s1 "" = False
+menor2 (x:xs) (y:ys) | x < y = True
+                     | x == y = menor2 xs ys
+                     |otherwise = False
+
+{-39. Considere que se usa o tipo [(a,Int)] para representar multi-conjuntos de elementos de a.
+Considere ainda que nestas listas nao ha pares cuja primeira componente coincida, nem cuja
+segunda componente seja menor ou igual a zero.
+Defina a funcao elemMSet :: Eq a => a -> [(a,Int)] -> Bool que testa se um elemento
+pertence a um multi-conjunto.
+Por exemplo, elemMSet ’a’ [(’b’,2), (’a’,4), (’c’,1)] corresponde a True enquanto
+que elemMSet ’d’ [(’b’,2), (’a’,4), (’c’,1)] corresponde a False.-}
+
+elemMSet :: Eq a => a -> [(a,Int)] -> Bool
+elemMSet n [] = False
+elemMSet n ((x,xs):ys) | n == x = True
+                       | otherwise = elemMSet n ys
+
+{-40. Considere que se usa o tipo [(a,Int)] para representar multi-conjuntos de elementos de a.
+Considere ainda que nestas listas nao ha pares cuja primeira componente coincida, nem cuja
+segunda componente seja menor ou igual a zero.
+Defina a funcao converteMSet :: [(a,Int)] -> [a] que converte um multi-conjuto na
+lista dos seus elementos
+Por exemplo, converteMSet [(’b’,2), (’a’,4), (’c’,1)] corresponde a "bbaaaac".-}
+
+converteMSet :: [(a,Int)] -> [a]
+converteMSet [] = []
+converteMSet ((x,xs):ys) | xs > 0 = x:converteMSet ((x,xs-1):ys)
+                         | otherwise = converteMSet ys
+
+{-41. Considere que se usa o tipo [(a,Int)] para representar multi-conjuntos de elementos de a.
+Considere ainda que nestas listas nao ha pares cuja primeira componente coincida, nem cuja
+segunda componente seja menor ou igual a zero.
+Defina a funçao insereMSet :: Eq a => a -> [(a,Int)] -> [(a,Int)] que acrescenta
+um elemento a um multi-conjunto.
+Por exemplo, insereMSet ’c’ [(’b’,2), (’a’,4), (’c’,1)] corresponde a [(’b’,2),
+(’a’,4), (’c’,2)].-}
+
+insereMSet :: Eq a => a ->[(a,Int)] -> [(a,Int)]
+insereMSet n [] = []
+insereMSet n ((x,xs):ys) | n == x = (x,xs+1):ys
+                         | otherwise = (x,xs) : insereMSet n ys
+
+{-42. Considere que se usa o tipo [(a,Int)] para representar multi-conjuntos de elementos de a.
+Considere ainda que nestas listas nao ha pares cuja primeira componente coincida, nem cuja
+segunda componente seja menor ou igual a zero.
+Defina a funcao removeMSet :: Eq a => a -> [(a,Int)] -> [(a,Int)] que remove um
+elemento a um multi-conjunto. Se o elemento nao existir, deve ser retornado o multi-conjunto
+recebido.
+Por exemplo, removeMSet ’c’ [(’b’,2), (’a’,4), (’c’,1)] corresponde a [(’b’,2),
+(’a’,4)].-}
+
+removeMSet :: Eq a => a -> [(a,Int)] -> [(a,Int)]
+removeMSet n [] = []
+removeMSet n ((x,xs):ys) | n == x = removeMSet n ys
+                         | otherwise = (x,xs) : removeMSet n ys
+
+{-43
+Considere que se usa o tipo [(a,Int)] para representar multi-conjuntos de elementos de a.
+Considere ainda que nestas listas nao ha pares cuja primeira componente coincida, nem cuja
+segunda componente seja menor ou igual a zero.
+
+Defina a funcao constroiMSet :: Ord a => [a] -> [(a,Int)] dada uma lista ordenada
+por ordem crescente, calcula o multi-conjunto dos seus elementos.
+Por exemplo, constroiMSet "aaabccc" corresponde a [(’a’,3), (’b’,1), (’c’,3)].
+-}
+
+constroiMSet :: Ord a => [a] -> [(a,Int)]
+constroiMSet [] = []
+constroiMSet (x:xs) | insereMSet x (constroiMSet xs)
+
+
