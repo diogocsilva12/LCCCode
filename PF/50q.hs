@@ -360,3 +360,115 @@ Por exemplo, constroiMSet "aaabccc" corresponde a [(’a’,3), (’b’,1), (�
 constroiMSet :: Ord a => [a] -> [(a,Int)]
 constroiMSet [] = []
 constroiMSet (x:xs) = insereMSet x (constroiMSet xs)
+
+{-44 Apresente uma definicao recursiva da funcao pre-definida partitionEithers :: [Either
+a b] -> ([a],[b]) que divide uma lista de Either s em duas listas.
+-}
+
+partitionEithers ::  [Either a b] -> ([a],[b])
+partitionEithers [] = ([],[])
+partitionEithers l = (lefts l , rights l)
+
+lefts :: [Either a b] -> [a]
+lefts [] = []
+lefts ((Left a) :t) = a : lefts t 
+lefts ((Right b) :t) = lefts t
+
+rights :: [Either a b] -> [b]
+rights [] = []
+rights ((Left a):t) = rights t 
+rights ((Right b):t) = b : rights t
+
+{-45  Apresente uma definicao recursiva da funcao pre-definida catMaybes :: [Maybe a] -> [a]
+que colecciona os elementos do tipo a de uma lista.
+-}
+catMaybes :: [Maybe a] -> [a]
+catMaybes [] = []
+catMaybes (Nothing : xs) = catMaybes xs
+catMaybes (Just x : xs)  = x:catMaybes xs
+
+{-46
+data Movimento = Norte | Sul | Este | Oeste
+                deriving Show
+Defina a funcao caminho :: (Int,Int) -> (Int,Int) -> [Movimento] que, dadas as posicoes
+inicial e final (coordenadas) do robot, produz uma lista de movimentos suficientes para que o
+robot passe de uma posição para a outra.
+-}
+
+data Movimento = Norte | Sul | Este | Oeste
+                deriving Show
+caminho :: (Int,Int) -> (Int,Int) -> [Movimento]
+caminho (x1,y1) (x2,y2) | x1 == x2 && y1 == y2 = []
+                        | x1 < x2 = Este : caminho (x1+1,y1) (x2,y2)
+                        | x1 > x2 = Oeste : caminho (x1-1,y1) (x2,y2)
+                        | y1 < y2 = Norte : caminho (x1,y1+1) (x2,y2)
+                        | y1 > y2 = Sul : caminho (x1,y1-1) (x2,y2)
+
+{-47. Consider o seguinte tipo de dados,
+data Movimento = Norte | Sul | Este | Oeste
+deriving Show
+Defina a funcao hasLoops :: (Int,Int) -> [Movimento] -> Bool que dada uma posicao
+inicial e uma lista de movimentos (correspondentes a um percurso) verifica se o robot alguma
+vez volta a passar pela posicao inicial ao longo do percurso correspondente. Pode usar a
+funcao posicao definida acima.
+-}
+
+-- ?? por favor não sair...
+
+{-
+48. Considere os seguintes tipos para representar pontos e rectangulos, respectivamente. Assuma
+que os rectangulos tem os lados paralelos aos eixos e sao representados apenas por dois dos
+pontos mais afastados.
+type Ponto = (Float,Float)
+data Rectangulo = Rect Ponto Ponto
+-}
+
+type Ponto = (Float,Float)
+data Rectangulo = Rect Ponto Ponto
+
+isQuadrado :: Rectangulo -> Bool
+isQuadrado (Rect (x1,y1) (x2,y2)) = altura == largura
+  where largura = abs(x2-x1)
+        altura = abs(y2-y1)
+
+contaQuadrados :: [Rectangulo] -> Int
+contaQuadrados [] = 0
+contaQuadrados (x:xs) | isQuadrado x = 1 + contaQuadrados xs
+                      | otherwise = contaQuadrados xs
+
+
+{-49. Considere os seguintes tipos para representar pontos e rectangulos, respectivamente. Assuma
+que os rectangulos tem os lados paralelos aos eixos e s˜ao representados apenas por dois dos
+pontos mais afastados.
+type Ponto = (Float,Float)
+data Rectangulo = Rect Ponto Ponto
+Defini a funcao areaTotal :: [Rectangulo] -> Float que, dada uma lista com rectangulos,
+determina a area total que eles ocupam-}
+
+calcArea (Rect (x1,y1) (x2,y2)) = altura * largura
+    where largura = abs(x2-x1)
+          altura = abs(y2-y1)
+
+areaTotal :: [Rectangulo] -> Float
+areaTotal [] = 0
+areaTotal (x:xs) = calcArea x + areaTotal xs
+
+
+{-50 Considere o seguinte tipo para representar o estado de um equipamento.
+data Equipamento = Bom | Razoavel | Avariado
+deriving Show
+Defina a funcao naoReparar :: [Equipamento] -> Int que determina a quantidade de
+equipamentos que nao estao avariados.-}
+{-
+data Equipamento = Bom | Razoavel | Avariado
+    deriving Show
+
+naoReparar :: [Equipamento] -> Int
+naoReparar [] = 0
+naoReparar (x:xs) | (x == Bom )|| (x == Razoavel) = naoReparar xs
+                  | otherwise = 1 + naoReparar xs 
+ 
+-}
+
+
+
