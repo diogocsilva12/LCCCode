@@ -359,6 +359,4 @@ Por exemplo, constroiMSet "aaabccc" corresponde a [(’a’,3), (’b’,1), (�
 
 constroiMSet :: Ord a => [a] -> [(a,Int)]
 constroiMSet [] = []
-constroiMSet (x:xs) | insereMSet x (constroiMSet xs)
-
-
+constroiMSet (x:xs) = insereMSet x (constroiMSet xs)
