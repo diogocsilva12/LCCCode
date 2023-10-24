@@ -44,7 +44,7 @@ myzip [] _ = []
 myzip _ [] = []
 myzip (x:xs) (y:ys) = (x, y) : myzip xs ys
 
---9 Definição recursiva da função replicate que dado um inteiro n e um elemento x constroi uma lista com n elementos, todos iguais a x.Applicative
+--9 Definição recursiva da função replicate que dado um inteiro n e um elemento x constroi uma lista com n elementos, todos iguais a x.
 
 myreplicate :: Int -> a -> [a]
 myreplicate 0 _ = []
