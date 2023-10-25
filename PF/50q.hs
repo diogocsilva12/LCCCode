@@ -459,16 +459,16 @@ data Equipamento = Bom | Razoavel | Avariado
 deriving Show
 Defina a funcao naoReparar :: [Equipamento] -> Int que determina a quantidade de
 equipamentos que nao estao avariados.-}
-{-
+  
 data Equipamento = Bom | Razoavel | Avariado
-    deriving Show
+    deriving (Show,Eq)
 
 naoReparar :: [Equipamento] -> Int
 naoReparar [] = 0
-naoReparar (x:xs) | (x == Bom )|| (x == Razoavel) = naoReparar xs
+naoReparar (x:xs) | x == Avariado = naoReparar xs
                   | otherwise = 1 + naoReparar xs 
  
--}
+
 
 
 
