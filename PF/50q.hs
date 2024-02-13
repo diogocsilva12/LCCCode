@@ -191,6 +191,13 @@ mytracos [] _ = []
 mytracos l1 [] = l1
 mytracos l1 (y:ys) = mytracos (mydelete y l1) ys
 
+mytracos2 :: Eq a => [a] -> [a] -> [a]
+mytracos2 [] _ = []
+mytracos2 l1 [] = l1
+mytracos2 (x:xs) l2 | x `elem` l2 = mytracos xs l2
+                    | otherwise = x: mytracos xs l2
+                    
+
 {-29
 Apresente uma definicao recursiva da funcao (pre-definida) union :: Eq a => [a] -> [a] -> [a] que retorna a lista resultante de acrescentar `a primeira lista os elementos da segunda
 que nao ocorrem na primeira.
