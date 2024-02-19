@@ -21,6 +21,8 @@ int mycp(char* origem,char* destino){
 
 
     while((res_read = read(fd_origem,buffer,BUFFER_SIZE))>0){
+
+
         ssize_t res_write = write(fd_destino, buffer, res_read);
 
         if(res_read != res_write){
