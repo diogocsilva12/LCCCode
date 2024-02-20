@@ -1,4 +1,4 @@
-import System.Win32 (xBUTTON1)
+
 f x = 2 * x
 g x = x + 1
 
