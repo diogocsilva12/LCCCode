@@ -21,7 +21,7 @@ typedef struct Pessoa{
 
 // -i - Acrescentar pessoas a um ficheiro de dados binario
 int adicionaPessoas(char* nome,char* apelido, int idade){
-    int fd_ficheiro = open("pessoas.bin",O_CREAT|O_RDWR|O_APPEND,0640);
+    int fd_ficheiro = open("pessoas.bin",O_CREAT|O_RDWR|O_APPEND|O_TRUNC,0640);
     Pessoa p;
 
 //EVITAR REPETIDOS
@@ -33,9 +33,10 @@ int adicionaPessoas(char* nome,char* apelido, int idade){
             return 1;
         }
     }
+    //copia todos os bytes da string de origem até ao \0
+    strcpy(p.nome, nome); //ou entao memcopy - funcao mais básica para copiar.
 
-    strcpy(p.nome, nome);
-    strcpy(p.apelido,apelido);
+
     p.idade = idade;
     int pos = lseek(fd_ficheiro, 0, SEEK_END); // Obter a posição atual (final do arquivo)
     write(fd_ficheiro,&p,sizeof(Pessoa));
