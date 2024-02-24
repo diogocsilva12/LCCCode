@@ -33,7 +33,7 @@ int main(int argc, char* argv[]){
 
     if ( strcmp(argv[1],"-o") == 0 )
     {
-        change_age1(atol(argv[2]),atoi(argv[3]));
+        change_age2(atol(argv[2]),atoi(argv[3]));
     }
 
     return 0;
