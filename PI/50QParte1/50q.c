@@ -143,11 +143,77 @@ char *ex10(char s1[],char s2[]){
 }
 */
 
-//Ex11 
+//Ex11 -> Inverte uma string
 void sttrev (char s[]){
-    
+    int i, temp;
+    for(i=0;i<strlen(s)/2;i++){ //só vamos até ao meio da string, porque assim evitamos trocar os mesmos elementos 2 vezes
+        temp = s[i];
+        s[i] = s[strlen(s)-i-1];
+        s[strlen(s)-i-1] = temp;
+    }
 }
 
 
 
+//Ex12 -> void strnoV que retira todas as vogais de uma string.
+void strnoV(char s[]) {
+    int i, j;
+
+    for (i = 0; s[i] != '\0'; i++) {
+        if (s[i] == 'a' || s[i] == 'e' || s[i] == 'i' || s[i] == 'o' || s[i] == 'u' ||
+            s[i] == 'A' || s[i] == 'E' || s[i] == 'I' || s[i] == 'O' || s[i] == 'U') {  
+
+            for (j = i; s[j] != '\0'; j++) {
+                s[j] = s[j + 1];
+            }
+
+            i--; 
+        }
+    }
+}
+
+/*
+//Ex13 -> void truncW(char t[], int n) -> que dado um texto t e um inteiro, trunca todas as palavras de forma a terem no máximo n caracteres.
+
+void trunW(char t[],int n){
+    int i,j;
+    for (i = 0, j = 0; t[i] != '\0'; i++) {
+        if (t[i] == ' ') {
+            t[j++] = '\0';
+            j = i + 1;
+        }
+        else if (j + 1 < n) {
+            t[j++] = t[i];
+        }      
+}
+    t[j] = '\0';
+}
+
+*/
+
+
+//EX14 -> Determina qual é o char mais frequente
+
+char charMaisfreq (char s[]) {
+    char maisfrequentechar;
+    int maisFreq = 0;
+    int contador = 0;
+    int i,j;
+    for(i = 0;s[i]!='\0';i++){
+        contador = 0;
+        for(j = 0;s[j]!='\0';j++){
+            if(s[i] == s[j]){
+                contador++;
+            }
+        }
+        if(contador > maisFreq){
+            maisFreq = contador;
+            maisfrequentechar = s[i];
+        }
+    }
+    return maisfrequentechar;
+}
+
+
+//Ex15 -> Dada uma string s calcula o comprimento da maior sub-string com caracteres iguais
 
