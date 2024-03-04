@@ -215,5 +215,47 @@ char charMaisfreq (char s[]) {
 }
 
 
+/*
 //Ex15 -> Dada uma string s calcula o comprimento da maior sub-string com caracteres iguais
 
+int iguaisConsecutivos (char s[]) {
+  int contador = 0; 
+  int maxCount = 0;
+  int i; 
+
+  for (i = 0; s[i] != '\0'; i++) {
+    if(s[i] == s[i+1]) {
+      contador++; 
+    } else {
+      if(contador > maxCount) {
+        maxCount = contador;
+      }
+      contador = 0; 
+    }
+  }
+  return maxCount; 
+}
+
+*/
+
+//Ex16 -> int difConsecutivos (char s[])
+
+int difConsecutivos(char s[]) {
+  int i = 0;
+  int contador = 0;
+  int maxContador = 0;
+  while (s[i] != '\0') {
+    if (s[i] != s[i + 1]) {
+      contador++;
+      // Atualiza o valor máximo dentro do loop
+      if (contador > maxContador) {
+        maxContador = contador;
+      }
+      i++;
+    }
+  }
+  return maxContador;
+}
+
+
+//Ex17 -> int maiorPrefixo (char s1[], char s2[])
