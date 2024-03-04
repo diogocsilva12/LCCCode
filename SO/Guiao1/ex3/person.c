@@ -70,7 +70,7 @@ int change_age2(long pos, int newage){
     int fd = open(FILENAME,O_RDWR);
     clock_t inicio, fim;
     inicio = clock();
-    lseek(fd, pos, SEEK_SET); // Ir para a posição especificada
+    lseek(fd, pos*sizeof(p), SEEK_SET); // Ir para a posição especificada
     if(read(fd, &p, sizeof(Pessoa)) == sizeof(Pessoa)) {
         p.age = newage;
         int curpos = lseek(fd, pos, SEEK_SET); // Voltar para a posição especificada
@@ -85,5 +85,6 @@ int change_age2(long pos, int newage){
     close(fd);
     return 0;
 }
+
 
 

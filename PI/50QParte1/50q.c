@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 
 /**
@@ -104,15 +105,48 @@ char *ex7(char s1[], char s2[]){
 
 //Ex8 *strcpy (char *dest, char source[]) que copia a string source para dest retornando o valor desta última.
 
-char *strcpy(char *dest, char source[]){
-    
+char *ex8(char *dest, char source[]){
+    int i =0;
+    char *start = dest;
+    while(source[i]!='\0'){
+        *dest = *source;
+        dest++;
+        source++;
+    }   
+    return start;
 }
 
+//Ex9 int strcmp(char s1[], char s2[]) que compara duas strings.
+int ex9(char s1[], char s2[]) {
+    int i = 0;
+    while (s1[i] && s2[i]) {  
+        if (s1[i] != s2[i]) { 
+            return s1[i] - s2[i]; 
+        }
+        i++;
+    }
 
+    return strlen(s1) - strlen(s2); // Return difference in lengths
+}
 
+/*
+//Ex10 char *strstr (char s1[], char s2[]) ->determina a posicao onde a string s2 ocorre em s1.
+char *ex10(char s1[],char s2[]){
+    for(int i = 0;s1[i] != '\0';i++){
+        for(int j=0;s2[j] != '\0';j++){
+            if(s1[i] == s2[j]){
+                return &(s1[i]);
+            }
+        }
+    }
+    return NULL;
+}
+*/
 
-
-
+//Ex11 
+void sttrev (char s[]){
+    
+}
 
 
 

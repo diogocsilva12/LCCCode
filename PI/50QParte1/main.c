@@ -65,6 +65,26 @@ int main(int argc,char* argv[]){
         scanf("%s",s2);
         ex7(s1,s2);
         break;
+    case 8:
+        char str1[100];
+        char str2[100];
+        printf("Introduza a primeira string: ");
+        scanf("%s",str1);
+        ex8(str2,str1);
+
+    case 9:
+        printf("Introduza a primeira string: ");
+        scanf("%s",s1);
+        printf("Introduza a segunda string: ");
+        scanf("%s",s2);
+        ex9(s1,s2);
+        break;
+    case 10:
+        printf("Introduza a primeira string: ");
+        scanf("%s",s1);
+        printf("Introduza a segunda string: ");
+        scanf("%s",s2);
+        ex10(s1,s2);
     default:
         break;
     }
