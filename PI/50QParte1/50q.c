@@ -232,7 +232,7 @@ int iguaisConsecutivos (char s[]) {
       }
       contador = 0; 
     }
-  }
+  }notion
   return maxCount; 
 }
 
@@ -259,3 +259,54 @@ int difConsecutivos(char s[]) {
 
 
 //Ex17 -> int maiorPrefixo (char s1[], char s2[])
+
+int maiorPrefixo(char s1[], char s2[]){
+    int i;
+    int contador = 0;
+    for(i=0;s1[i] != '\0' & s2[i] != '\0';i++){
+        if(s1[i]==s2[i]){
+            contador++;
+        }
+        else{
+            break;
+        }
+    }
+    return contador;
+}
+
+/*
+ //Ex18 -> maiorSufixo que calcula o comprimento do maior sufixo comum entre duas strings
+
+
+int maiorSufixo (char s1 [], char s2 []) {
+    int i;
+    int contador = 0;
+    for(i=strlen(s1)-1; i >= 0; i--) {
+    if(s1[i] == s2[i]) {
+    contador++;
+  } else {
+    break;
+  }
+}
+  return contador;
+}
+*/
+
+
+//Ex19
+
+/*
+//Ex20 
+
+int contaPal(char s[]){
+    int i;
+    int contador = 0;
+    for(i=0;s[i]!='\0';i++){
+        if(s[i] == '\n'){
+            contador++;
+        }
+    }
+    return contador;
+}
+
+*/
