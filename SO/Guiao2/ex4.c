@@ -4,9 +4,7 @@
 #include <sys/wait.h>
 
 
-//EX1 E EX2
-//PAI CRIA UMA FILHO DE CADA VEZ
-
+//Ex4
 
 int main(){
     for(int idx = 1;idx<10;idx++){
@@ -17,9 +15,10 @@ int main(){
         sleep(2);
         //printf("FILHO: Retorno fork: %d\n",pid);
         _exit(idx); //funcao tipo return, liberta recursos do processo pai
-
-    }else{
-        
+        }
+    }
+    
+    for(int idx = 1;idx<10;idx++){    
         int status;
         pid_t wait_pid = wait(&status); //retorna o valor do filho que acabou e guarda na status
 
@@ -30,6 +29,6 @@ int main(){
             printf("ERRO AO TERMINAR");
         }
     }
-    }
     return 0;
-}
+    }
+    
