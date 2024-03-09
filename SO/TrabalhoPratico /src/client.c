@@ -14,6 +14,10 @@ void runProgram(char *command[]){
     char *buffer = malloc(sizeof(char)*MAX);
 
     pid_t pid = fork();
+    
+    if(pid < 0){
+        perror("Erro ao fazer fork!");
+    }
 
     /**
      * @brief Processo Filho
@@ -21,27 +25,23 @@ void runProgram(char *command[]){
      */
     if (pid == 0)
     {
-        sleep(0);
 
         printf("RODANDO");
-        execvp(command[0]);
+        execvp(command[0],command);
         printf("RODOU");
+        write(2,"Error: Exec failed\n",sizeof("Error: Exec failed\n"));
         
-        printf("Exec correu mal\n"); //Isto aparece se nao for possivel fazer o exec do programa.
-
-        _exit(1);
+        _exit(0);
     }
 
     int status;
-
-    
     wait(&status);
 
 
     int fd = open("tmp/ficheiro.txt", O_WRONLY | O_CREAT | O_APPEND, 0600);
 
 
-    if (WIFEXITED(status)) {
+    if (WIFEXITED(status) == 1) {
         int nbytes = sprintf(buffer, "Pid: %d\nProgram: %s\n", getpid(), command[0]);
         write(fd, buffer, nbytes);
 
