@@ -2,51 +2,34 @@
 #include "mysystem.h"
 
 
-void controller(int N, char** commands) {
-	int status[N]; 
-    int num_exec[N];
-
-    for (int i = 0; i < N; i++) {
-        status[i] = 0;
-        num_exec[i] = 0;
+void controller(int N, char** commands){
+    int i;
+    int pids[N];
+    for(i = 0;i < N; i++){
+        pid_t pid = fork();
+        if(pid == 0){
+            int res = 1;
+            int count_ite = 0;
+            while(res > 0){
+                res = mysystem(commands[i]);
+                count_ite++;
+            }
+            _exit(count_ite);
+    }
+    else{
+        pids[i] = pid;
+    }
     }
 
-    while (1) {
-        for (int i = 0; i < N; i++) {
-            if (status[i] == 0) {
-                pid_t pid = fork();
-                if (pid == 0) {
-                    mysystem(commands[i]); 
-                    perror("exec");
-                    exit(1);
-                } else if (pid > 0) {
-                    wait(&status[i]);
-                    if (WIFEXITED(status[i])) {
-                        num_exec[i]++;
-                        status[i] = WEXITSTATUS(status[i]); 
-                    }
-                } else {
-                    perror("fork");
-                    exit(1);
-                }
-            }
-        }
+    for(i = 0 ;i< N;i++){
+        int status;
+        waitpid(pids[i],&status,0); //retorna o valor do filho que acabou e guarda na status
 
-        int finished = 1;
-        for (int i = 0; i < N; i++) {
-            if (status[i] != 0) {
-                finished = 0;
-                break;
-            }
+        if(WIFEXITED(status)){
+            printf("Comando %s executed %d times\n",commands[i],WEXITSTATUS(status));
+        }else{
+            printf("ERRO AO TERMINAR");
         }
-
-        if (finished) {
-            break;
-        }
-    }
-
-    for (int i = 0; i < N; i++) {
-        printf("%s: %d\n", commands[i], num_exec[i]);
     }
 }
 
