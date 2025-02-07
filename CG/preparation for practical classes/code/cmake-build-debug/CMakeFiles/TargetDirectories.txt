@@ -1,3 +1,0 @@
-/Users/diogokeeper12/Documents/ LCC/CG/preparation for practical classes/code/cmake-build-debug/CMakeFiles/class1.dir
-/Users/diogokeeper12/Documents/ LCC/CG/preparation for practical classes/code/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/diogokeeper12/Documents/ LCC/CG/preparation for practical classes/code/cmake-build-debug/CMakeFiles/rebuild_cache.dir

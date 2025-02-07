@@ -1,5 +1,5 @@
 CMakeFiles/class1.dir/main.cpp.o: \
-  /Users/diogokeeper12/Documents/\ LCC/CG/p01/main.cpp \
+  /Users/diogokeeper12/Documents/GitHub/LCCCode/CG/p01/main.cpp \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/System/Library/Frameworks/OpenGL.framework/Headers/OpenGLAvailability.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/os/availability.h \

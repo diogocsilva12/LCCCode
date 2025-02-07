@@ -43,7 +43,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/Applications/CMake.app/Contents/share/cmake-3.31/Modules/Platform/Linker/Apple-AppleClang.cmake"
   "/Applications/CMake.app/Contents/share/cmake-3.31/Modules/Platform/UnixPaths.cmake"
   "/Applications/CMake.app/Contents/share/cmake-3.31/Modules/SelectLibraryConfigurations.cmake"
-  "/Users/diogokeeper12/Documents/ LCC/CG/p01/CMakeLists.txt"
+  "/Users/diogokeeper12/Documents/GitHub/LCCCode/CG/p01/CMakeLists.txt"
   "CMakeFiles/3.31.5/CMakeCCompiler.cmake"
   "CMakeFiles/3.31.5/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.31.5/CMakeSystem.cmake"

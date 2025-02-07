@@ -1,3 +1,3 @@
-/Users/diogokeeper12/Documents/ LCC/CG/p01/build/CMakeFiles/class1.dir
-/Users/diogokeeper12/Documents/ LCC/CG/p01/build/CMakeFiles/edit_cache.dir
-/Users/diogokeeper12/Documents/ LCC/CG/p01/build/CMakeFiles/rebuild_cache.dir
+/Users/diogokeeper12/Documents/GitHub/LCCCode/CG/p01/build/CMakeFiles/class1.dir
+/Users/diogokeeper12/Documents/GitHub/LCCCode/CG/p01/build/CMakeFiles/edit_cache.dir
+/Users/diogokeeper12/Documents/GitHub/LCCCode/CG/p01/build/CMakeFiles/rebuild_cache.dir
