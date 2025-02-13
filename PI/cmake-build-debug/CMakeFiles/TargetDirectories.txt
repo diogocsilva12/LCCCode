@@ -1,3 +1,0 @@
-/home/diogokeeper12/Documents/GitHub/LCCCode/PI/cmake-build-debug/CMakeFiles/PI.dir
-/home/diogokeeper12/Documents/GitHub/LCCCode/PI/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/diogokeeper12/Documents/GitHub/LCCCode/PI/cmake-build-debug/CMakeFiles/rebuild_cache.dir
