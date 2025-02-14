@@ -1,0 +1,112 @@
+{"backend_state":"ready","kernel":"sage-9.8","kernel_state":"idle","kernel_usage":{"cpu":0,"memory":0},"last_backend_state":1739541883923,"last_ipynb_save":1739541979405,"metadata":{"language_info":{"codemirror_mode":{"name":"ipython","version":3},"file_extension":".py","mimetype":"text/x-python","name":"python","nbconvert_exporter":"python","pygments_lexer":"ipython3","version":"3.8.5"},"nbgrader":{"__altered":false,"__hash":1043241747,"_root":{"entries":[["__altered",false],["__hash",-335098374],["_root",{"entries":[["cocalc_minimal_stubs",false]],"ownerID":{}}],["cocalc_minimal_stubs",false],["size",1]],"ownerID":{}},"cocalc_minimal_stubs":false,"size":5}},"type":"settings"}
+{"cell_type":"code","exec_count":0,"id":"030ccf","input":"n(15/7)","pos":28,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"04a482","input":"is_prime(11)","pos":95,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"070822","input":"nome = input(\"Como te chamas? \")\nprint(\"Olá,\", nome, \"! Bem-vindo(a)!\")","metadata":{"cocalc":{"outputs":{"0":{"name":"input","opts":{"password":false,"prompt":"Como te chamas? "},"output_type":"stream","value":"Cláudia"}}}},"pos":43,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"071935","input":"a+(2*b-3)","pos":10,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"0735f1","input":"L.reverse()   #inverte a ordem dos elementos de L\nL","pos":70,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"07ac74","input":"P=[n for n in range(20) if n%2==0]     # lista dos pares menores que 20\nP","pos":107,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"0cab1e","input":"10/4    # fração reduzida","pos":22,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"0f2e4a","input":"L[1:4]   #sublista de L com os elementos na posição 1 até 3 (3=4-1)","pos":67,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"0f52d4","input":"nome = input(\"Digite seu nome: \")      # usando if-else com entrada do utilizador\n\nif nome == \"Cláudia\":\n    print(\"Olá, Cláudia!\")\nelse:\n    print(\"Olá, estranho!\")\n","metadata":{"cocalc":{"outputs":{"0":{"name":"input","opts":{"password":false,"prompt":"Digite seu nome: "},"output_type":"stream","value":"Cláudia"}}}},"pos":55,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"13d7e3","input":"L[3]   #elemento de L na posição 3","pos":66,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"17c532","input":"L","pos":89,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"18df3c","input":"list(range(6))   # faz o mesmo que list(range(0,6))","pos":98,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"1a242c","input":"L+T        #cria a lista formada pelos elementos de L e pelos elementos de T","pos":86,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"1d8a43","input":"2**4   # potência ** (alternativa)","pos":5,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"264202","input":"15.is_prime()","pos":94,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"2bd94c","input":"a=1\nb=5\na\nb        #apresenta apenas o resultado da última instrução","pos":18,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"34b3d4","input":"c==d","pos":15,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"35e6c5","input":"","pos":109,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"3721e8","input":"a=2\nb=1\nif a<b:\n    print(\"a é menor do que b\")\nelse:\n    print(\"a não é menor do que b\")","pos":52,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"373e3e","input":"L[0] ","pos":69,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"3963da","input":"L.append(35)    #acrescenta o elemento 35\nL","pos":84,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"3f2706","input":"13//4 # quociente 3 e resto 1","pos":38,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"3f41f2","input":"len(a)          # len(string): número de caracteres (incluindo espaços)","pos":75,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"408270","input":"L=[n for n in range(20,38)]    # é o mesmo que list(range(20,38))\nL","pos":102,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"4302cc","input":"a=2\nb=4\nif a<b or a==b:\n    print(\"a é menor ou igual do que b\")\nelse:\n    print(\"a não é menor do que b\")","pos":53,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"439994","input":"c=10\nd=2*5","pos":11,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"4875e0","input":"L[1],L[7]=L[7],L[1]     # trocar os elementos nas posições 1 e 7\nL","pos":83,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"4a67a8","input":"1+1       #para correr o código clicar em Run ou fazer Shift+Enter","pos":2,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"4c6e57","input":"8%4","pos":32,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"4f7f02","input":"a=float(input(\"Digite um número: \"))    \nb=float(input(\"Digite um outro número: \"))\nif a<b or a==b:                                 # para decidir se a<b, temos de converter a string para número\n    print(\"a é menor ou igual do que b\")\nelse:\n    print(\"a não é menor do que b\")","metadata":{"cocalc":{"outputs":{"0":{"name":"input","opts":{"password":false,"prompt":"Digite um número: "},"output_type":"stream","value":"89"},"1":{"name":"input","opts":{"password":false,"prompt":"Digite um outro número: "},"output_type":"stream","value":"34.8"}}}},"pos":56,"scrolled":true,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"52323e","input":"num1 = int(input(\"Digite um número inteiro: \"))                    # O input() retorna uma string -- então usamos int() para converter \nnum2 = int(input(\"Digite outro número inteiro (não nulo): \"))      # para número inteiro.\nresultado = num1/num2\nprint(\"Resultado:\", resultado)","metadata":{"cocalc":{"outputs":{"0":{"name":"input","opts":{"password":false,"prompt":"Digite um número inteiro: "},"output_type":"stream","value":"87"},"1":{"name":"input","opts":{"password":false,"prompt":"Digite outro número inteiro (não nulo): "},"output_type":"stream","value":"23"}}}},"pos":45,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"57290f","input":"Q=[]     # começamos com a lista vazia\nfor n in range(20):    #para n de 0 até 20 (exclusive)\n    if n%2==0:        # se n for par\n        Q.append(n)    # juntar n à lista Q\nprint(Q)","pos":108,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"5910ef","input":"R=[3,7,2]\nprint(R+L)\nprint(L+R)","pos":90,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"5bc04b","input":"prime_range(10,38)   #primos >=10 e <38","pos":101,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"63cb91","input":"L[0]=100     # substitui o elemento na posição 0 por 100\nL","pos":82,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"66775a","input":"b=4\nb","pos":9,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"67b293","input":"10%4    # resto da divisão inteira de 10 por 4  ---- pensar em mod4","pos":30,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"6d2885","input":"10/2     # 5/1=5","pos":25,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"6d6b42","input":"L=[n for n in range(20,38) if is_prime(n)]  # lista dos primos entre 20 (inclusive) e 38 (exclusive)\nL","pos":103,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"6ec677","input":"L=[3,10,25,4,-1,12,5,9]     #lista definida por extensão --- faço a listagem dos elementos dentro de parênteses\n                            #retos e separados por vírgulas","pos":63,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"6f2dc5","input":"prime_range(10)   #primos menores que 10","pos":99,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"70bf3a","input":"2^4      #potência ^","pos":4,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"718f41","input":"type(a)     #tipo de a: a é uma string (palavra)","pos":79,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"72d0fb","input":"L[0]  #elemento de L na posição 0","pos":65,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"778e47","input":"L.sort()    #ordena os elementos de L por ordem crescente --- altera L\nL","pos":68,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"783f02","input":"c","pos":16,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"79d484","input":"T=[2,4,6]","pos":85,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"7b4a03","input":"num1 = float(input(\"Digite um número: \"))\nnum2 = float(input(\"Digite outro número (não nulo): \"))\nresultado = num1/num2\nprint(\"Resultado:\", resultado)","metadata":{"cocalc":{"outputs":{"0":{"name":"input","opts":{"password":false,"prompt":"Digite um número: "},"output_type":"stream","value":"13.6"},"1":{"name":"input","opts":{"password":false,"prompt":"Digite outro número (não nulo): "},"output_type":"stream","value":"87.5"}}}},"pos":47,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"7d1856","input":"7%4","pos":34,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"806e63","input":"is_prime(15)   #is_prime(p) diz-nos se um natural p é ou não primo\n               # 15 é primo?","pos":93,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"8743b7","input":"a*b","pos":21,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"877e70","input":"for n in L:\n    print(2*n)","pos":106,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"8e9c93","input":"45*10    #multiplicação *","pos":3,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"8f464e","input":"c==d          # o símbolo == é para comparar dois valores\n             # c tem o mesmo valor que d","pos":12,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"909225","input":"a,b=1,5      #atribuir o valor 1 à variável a e o valor 5 à variável b\nprint(a,b)    # apresentar o valor de a seguido do valor de b","pos":17,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"94d8a0","input":"c==11  # c tem o valor 11","pos":13,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"952ba7","input":"b=123456\nlen(b)           # b é entendido como um inteiro; não está definida lens(b)","pos":76,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"97696a","input":"# Solicita os números ao utilizador\nnum1 = float(input(\"Digite o primeiro número: \"))\nnum2 = float(input(\"Digite o segundo número: \"))\n\n# Solicita a operação desejada ao utilizador\noperacao = input(\"Escolha a operação (+, -, *, /): \")\n\n# Estrutura if-elif-else para calcular o resultado\nif operacao == \"+\":\n    resultado = num1 + num2\n    print(f\"O resultado de {num1} + {num2} é {resultado}\")\nelif operacao == \"-\":\n    resultado = num1 - num2\n    print(f\"O resultado de {num1} - {num2} é {resultado}\")\nelif operacao == \"*\":\n    resultado = num1 * num2\n    print(f\"O resultado de {num1} * {num2} é {resultado}\")\nelif operacao == \"/\":\n    if num2 != 0:\n        resultado = num1 / num2\n        print(f\"O resultado de {num1} / {num2} é {resultado}\")\n    else:\n        print(\"Erro: divisão por zero não é permitida.\")\nelse:\n    print(\"Operação inválida. Escolha entre +, -, * ou /.\")","metadata":{"cocalc":{"outputs":{"0":{"name":"input","opts":{"password":false,"prompt":"Digite o primeiro número: "},"output_type":"stream","value":"13"},"1":{"name":"input","opts":{"password":false,"prompt":"Digite o segundo número: "},"output_type":"stream","value":"25"},"2":{"name":"input","opts":{"password":false,"prompt":"Escolha a operação (+, -, *, /): "},"output_type":"stream","value":"/"}}}},"pos":60,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"9ecc32","input":"a=2\nb=2\nif a<b or a==b:\n    print(\"a é menor ou igual do que b\")\nelse:\n    print(\"a não é menor do que b\")","pos":54,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"9f7078","input":"list(range(1,5))   # lista com os naturais de 1 a 4 (4=5-1)","pos":96,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"a29e1e","input":"L=L+T    # atribuir L+T à variável L  --- já alteramos L","pos":88,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"a6fb01","input":"a=\"matematica\"","pos":74,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"a71edf","input":"a","pos":8,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"aa2b7f","input":"type(L)   #tipo de L: L é uma lista","pos":80,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"aa6032","input":"c=\"boa tarde\"\nprint(c)","pos":20,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"ad39b5","input":"L","pos":81,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"adcbcc","input":"c=11   # atribuir novo valor a c e esse valor é o 11","pos":14,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"aebe0e","input":"list(range(10,100)) ;  # com o ; já não apresenta o output","pos":97,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"b16d0b","input":"a = 2    # o símbolo = é para ATRIBUIÇÃO\n#atribuir o valor 2 à variável a   \n","pos":7,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"b32f58","input":"prime_range(11)","pos":100,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"b85122","input":"L    # ao fazer L+T não alteramos L","pos":87,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"bdcea3","input":"5%4","pos":31,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"c50bcb","input":"13%4","pos":35,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"c57798","input":"type(b)     #tipo de b    (é um inteiro)","pos":78,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"c6e8db","input":"5/25","pos":23,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"c7419b","input":"12/5","pos":26,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"c78eba","input":"L  #ou print(L)","pos":64,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"ca61f9","input":"11%4","pos":36,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"cb475f","input":"2/6","pos":24,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"cd48ce","input":"L[0]","pos":71,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"ce3573","input":"T=[n^2 for n in L]     # quadrados dos elementos de L\nT","pos":104,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"d74c06","input":"a=1\nb=5\nprint(a)    # apresentar o valor de a\nprint(b)     #apresentar o valor de b","pos":19,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"db8805","input":"10//4    #quociente inteiro  10 : 4 = 2 (e resto 2)","pos":37,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"e44aa4","input":"R=[2*n for n in L]\nR","pos":105,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"e7f3ce","input":"n(10/4)     #na forma decimal com 15 dígitos (neste caso, corresponder a 14 casas decimais); pode usar-se N(10/4)","pos":27,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"e8e216","input":"len(L)   #len é o mesmo que comprimento --- length\n         #len(list): número de elementos da lista","pos":72,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"ead1e6","input":"3%4","pos":33,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"f1df9d","input":"n(15/7, digits=4)    # com 4 dígitos; neste caso, 3 casas decimais","pos":29,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"f93253","input":"len(str(b))   # comprimento da string definida por b","pos":77,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"fdedf0","input":"a=1\nb=2\nif a<b:\n    print(\"a é menor do que b\")\nelse:\n    print(\"a não é menor do que b\")","pos":51,"type":"cell"}
+{"cell_type":"markdown","id":"24ea3e","input":"<span style='font-size:x-large'>**atribuição de valores a variáveis**</span>\n\n","pos":6,"type":"cell"}
+{"cell_type":"markdown","id":"4a1c9c","input":"<span style='font-size:x-large'>**IF\\-ELSE**</span>\n\n","pos":48,"type":"cell"}
+{"cell_type":"markdown","id":"505c50","input":"<span style='font-size:x-large'>**python**</span><span style='font-size:large'> **como calculadora**</span>\n","pos":1,"type":"cell"}
+{"cell_type":"markdown","id":"6baaac","input":"Em Python, a estrutura if\\-else é usada para executar diferentes blocos de código com base numa condição. Se a condição for verdadeira \\(True\\), o bloco dentro do if será executado. Caso contrário, o bloco dentro do else será executado.\n","pos":49,"type":"cell"}
+{"cell_type":"markdown","id":"6dd7ba","input":"A função is\\_prime\\(\\) é utilizada para determinar se um número é primo. Para números inteiros, utiliza um teste de primalidade adequado, enquanto para números racionais, retorna False.\n","pos":92,"type":"cell"}
+{"cell_type":"markdown","id":"8bb5cf","input":"<span style='font-size:x-large'>**função is\\_prime\\(\\)**</span>\n","pos":91,"type":"cell"}
+{"cell_type":"markdown","id":"cc88e2","input":"<span style='font-size:x-large'>**input\\(\\)**</span>\n\n","pos":39,"type":"cell"}
+{"cell_type":"markdown","id":"d1ea15","input":"# LISTAS\n\n","pos":62,"type":"cell"}
+{"cell_type":"markdown","id":"d22c59","input":"<span style='font-size:large'>A estrutura if\\-elif\\-else é usada para tomar decisões com base em múltiplas condições.</span>\n","pos":58,"type":"cell"}
+{"cell_type":"markdown","id":"ef9dea","input":"<span style='font-size:x-large'>**IF\\-ELIF\\-ELSE**</span>\n\n","pos":57,"type":"cell"}
+{"cell_type":"markdown","id":"faef48","input":"# INTRODUÇÃO AO SAGE","pos":0,"type":"cell"}
+{"cell_type":"raw","id":"0b969f","input":"O texto dentro do input() serve para orientar o utilizador sobre o que deve escrever.\nO valor introduzido pelo utilizador é guardado na variável.","pos":42,"type":"cell"}
+{"cell_type":"raw","id":"13b208","input":"if(condição):  \n      Bloco de instruções indentado para quando a condição for VERDADEIRA  \nelse:  \n      Bloco de instruções indentado para quando a condição for FALSA  ","pos":50,"type":"cell"}
+{"cell_type":"raw","id":"162a12","input":"A função input() em Python é usada para receber dados do utilizador através do teclado. Esta função retorna sempre uma string (texto).\n\nSe for necessário trabalhar com números, temos de converter a entrada para int (número inteiro) ou float (número decimal).","pos":40,"type":"cell"}
+{"cell_type":"raw","id":"182504","input":"A função len() em Python é usada para contar o número de elementos de uma sequência, como cadeias de caracteres (strings), listas (list), tuplos (tuple), dicionários (dict) e conjuntos (set).","pos":73,"type":"cell"}
+{"cell_type":"raw","id":"286d07","input":"OBS: Podemos optar por usar float na conversão dos números: com float(input()) permitimos que o utilizador insira números com casas decimais, tornando o programa mais versátil.","pos":46,"type":"cell"}
+{"cell_type":"raw","id":"701988","input":"variavel = input(\"Mensagem para o utilizador: \")","pos":41,"type":"cell"}
+{"cell_type":"raw","id":"8386f4","input":"if(condição1):\n    Bloco de instruções indentado para quando a condição1 for VERDADEIRA\nelif(condição2):\n    Bloco de instruções indentado para quando a condição1 for FALSA e a condição2 for VERDADEIRA\nelif(condição3):\n    Bloco de instruções indentado para quando as condições anteriores forem FALSAS e a condição3 for VERDADEIRA\nelse:\n    Bloco de instruções indentado para quando nenhuma das condições anteriores for VERDADEIRA\n","pos":59,"type":"cell"}
+{"cell_type":"raw","id":"d4bafd","input":"No exemplo que se segue solicitamos ao utilizador que introduza dois números inteiros e o resultado apresentado é obtido a partir da divisão desses números.\n\nSe o utilizador introduzir um número não inteiro receberá uma mensagem de erro. Acontecerá o mesmo se o utilizador introduzir 0 para o divisor.","pos":44,"type":"cell"}
+{"id":0,"time":1739541863679,"type":"user"}
+{"last_load":1739365516285,"type":"file"}

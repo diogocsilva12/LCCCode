@@ -1,0 +1,99 @@
+{"backend_state":"ready","kernel":"sage-9.8","kernel_state":"idle","kernel_usage":{"cpu":0,"memory":0},"last_backend_state":1739541740391,"last_ipynb_save":1739541740369,"metadata":{"language_info":{"codemirror_mode":{"name":"ipython","version":3},"file_extension":".py","mimetype":"text/x-python","name":"python","nbconvert_exporter":"python","pygments_lexer":"ipython3","version":"3.11.1"},"nbgrader":{"__altered":false,"__hash":-335098374,"_root":{"entries":[["cocalc_minimal_stubs",false]],"ownerID":{}},"cocalc_minimal_stubs":false,"size":1}},"type":"settings"}
+{"cell_type":"code","exec_count":0,"id":"10f1cc","input":"n=100","pos":15,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"111488","input":"a^(-1)     # ou 1/a","pos":30,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"120426","input":"","pos":85,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"13439f","input":"","pos":88,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"18cb93","input":"Zn=IntegerModRing(n)\nZn","pos":16,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"19330f","input":"factor(561)    # 561 não é primo","pos":69,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"19efc7","input":"a=77\ngcd(a,n)","pos":18,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"1d8cd7","input":"a=43\nb=33","pos":4,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"1dc4fd","input":"a=2","pos":58,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"1ebb90","input":"xgcd(a,b)          #   mdc(a,b)=a*x+b*y  &   xgcd(a,b)=(mdc(a,b),x,y)","pos":5,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"20cae6","input":"","pos":87,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"22b53a","input":"n","pos":79,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"23d52e","input":"Zn=IntegerModRing(n)\nZn","pos":57,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"25f449","input":"gcd(a,b)","pos":6,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"2bb0d9","input":"L=[n for n in range(1,1000) if gcd(2,n)==1 and not is_prime(n) and power_mod(2,n-1,n)==1]\nL","pos":68,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"2c8665","input":"","pos":12,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"30c7b2","input":"sat_tese_PTF(3000,3)","pos":76,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"3147bd","input":"n.ndigits()","pos":55,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"31d17d","input":"xgcd?","pos":27,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"32696c","input":"","pos":11,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"34fcf3","input":"","pos":91,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"37db96","input":"mod(a^(n-1),n)","pos":65,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"380bf2","input":"power_mod(2,560,561)","pos":71,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"42382b","input":"n.is_prime()","pos":56,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"486a4c","input":"a^(n-1)%n        # mod(a^(n-1),n) \"OverflowError: exponent must be at most 9223372036854775807\"","pos":62,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"4d48a7","input":"","pos":82,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"57cad1","input":"n=15\nZn=IntegerModRing(n)\nZn","pos":46,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"5f21b2","input":"Zn.multiplication_table()","pos":42,"scrolled":true,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"5f3e40","input":"power_mod(a,n-1,n)","pos":63,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"6417bd","input":"","pos":93,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"67981d","input":"","pos":89,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"69d51f","input":"","pos":94,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"6a1a07","input":"xgcd(a,n)","pos":21,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"6aa996","input":"a=Zn(121)","pos":35,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"75c38e","input":"a=Zn(77)","pos":28,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"7646ce","input":"gcd(a,n)","pos":59,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"7949ea","input":"sat_tese_PTF(3000)","pos":75,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"795ec4","input":"n=224\nZn=IntegerModRing(n)\nZn","pos":33,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"8088e9","input":"a*137","pos":38,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"8637c7","input":"sat_tese_PTF(1000)","pos":74,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"943b5a","input":"a^(-1)          # o inverso de a é 137 (módulo 224)","pos":36,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"9448d5","input":"","pos":92,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"944bf5","input":"for a in range(20):\n    if gcd(a,n)==1 and not power_mod(a,n-1,n)==1:\n        print(a)","pos":80,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"9a3687","input":"list(Zn)","pos":47,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"a1a4b1","input":"1==13*a+(-10)*n","pos":24,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"ad157c","input":"n=2^512+1","pos":53,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"ad4297","input":"","pos":10,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"ae8547","input":"","pos":90,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"b769e3","input":"a^(-1)    # calcula o inverso de a no anel dos reais","pos":19,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"bf8505","input":"type(a)","pos":20,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"bfa8b7","input":"mod(2^(n-1),n)","pos":49,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"c3a1d8","input":"Zn.addition_table()","pos":41,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"c3dd08","input":"","pos":95,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"ca9f56","input":"unidades=[a for a in Zn if gcd(a,n)==1]\nunidades","pos":48,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"cdfc10","input":"n","pos":54,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"d1604d","input":"a*201           # 121*201=24321 é congruente com 129 módulo 224","pos":39,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"d31c30","input":"Zn(-87)","pos":37,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"d591bb","input":"type(a)","pos":29,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"db390d","input":"","pos":86,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"dd768a","input":"unidades=[k for k in Zn if gcd(k,n)==1]\nunidades","pos":17,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"e5d288","input":"","pos":84,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"ea127c","input":"xgcd(11111111111,1000000001)","pos":9,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"eb9838","input":"a=121          # o inverso de a é -87 (módulo 224)\nxgcd(a,n)","pos":34,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"ee4b60","input":"Zp=IntegerModRing(561)\ngcd(2,561)","pos":70,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"f2889d","input":"def sat_tese_PTF(k, a=2):\n    L=[n for n in range(1,k) if gcd(a,n)==1 and not is_prime(n) and power_mod(a,n-1,n)==1]\n    return L","pos":73,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"f57fac","input":"a=Zn(2)","pos":64,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"fb8075","input":"n=5\nZn=IntegerModRing(n)\nZn","pos":40,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"fdcd8a","input":"","pos":83,"type":"cell"}
+{"cell_type":"markdown","id":"12649a","input":"Obs.: Se $a$ for tal que $1$&lt;$a$&lt;$n$ e mdc$(a,n)=1$ e se $$a^{n-1}\\not\\equiv 1\\ (\\!\\!\\!\\!\\mod n)$$ então $n$ não é primo.\n\n","pos":45,"type":"cell"}
+{"cell_type":"markdown","id":"1d13e0","input":"## exercício 2a\\)\n\n","pos":13,"type":"cell"}
+{"cell_type":"markdown","id":"22722c","input":"Podemos concluir que $a^{-1}$ é 13 (inverso de $a$ módulo $n$)","pos":26,"type":"cell"}
+{"cell_type":"markdown","id":"3c3bdc","input":"2 é primo com o 15; $2^{n-1}\\not\\equiv 1\\ (\\!\\!\\!\\!\\mod n)$; por isso, n=15 não é primo","pos":50,"type":"cell"}
+{"cell_type":"markdown","id":"4297dd","input":"## exercício 3c\\)\n\n","pos":77,"type":"cell"}
+{"cell_type":"markdown","id":"54cac6","input":"Como encontramos valores para a nestas condições, podemos concluir que n=2^512+1 não é primo","pos":81,"type":"cell"}
+{"cell_type":"markdown","id":"6357b0","input":"## Pequeno Teorema de Fermat","pos":43,"type":"cell"}
+{"cell_type":"markdown","id":"642091","input":"Pequeno Teorema de Fermat: $n$ primo, $1 < a < n$, e $mdc(a, n)=1$ então $$a^{n-1} \\equiv 1\\ (\\!\\!\\!\\!\\mod n).$$ \n\n","pos":44,"type":"cell"}
+{"cell_type":"markdown","id":"700a7e","input":"${\\rm xgcd}(a,n)$ devolve um terno em que o primeiro elemento é ${\\rm mdc}(a,n)$, o segundo elemento é o inverso de $a\\ (\\!\\!\\!\\!\\mod n)$\n\n$1=13*a+(-10)*n$","pos":23,"type":"cell"}
+{"cell_type":"markdown","id":"779b3c","input":"Sejam $a,n$ naturais tais que ${\\rm mdc}(a,n)=1$.\n\nDo algoritmo de Euclides estendido, sabemos que existem inteiros $x,y$ tais que $$ax+ny=1.$$\nAssim, $$ax=1-ny,$$ donde $$ax \\equiv 1\\ (\\!\\!\\!\\!\\mod n).$$\n\nSabemos que um elemento b em $\\mathbb{Z}_n$ é invertível sse ${\\rm mdc}(b,n)=1$. Segue-se que o inverso de $a$ em $\\mathbb{Z}_n$ é $x$.\n\nSe usarmos o código ${\\rm xgcd}(a,n)$, obtemos um terno $(g,s,t)$ tal que $g=s*a+t*n={\\rm mdc}(a,n)$.\n\nAssim, o inverso módulo $n$ de $a$ é o elemento $s$ do referido terno.\n\n","pos":1,"type":"cell"}
+{"cell_type":"markdown","id":"7ffb3f","input":"## OBS.:","pos":25,"type":"cell"}
+{"cell_type":"markdown","id":"823aa0","input":"## exercício 1a\\)\n\n","pos":2,"type":"cell"}
+{"cell_type":"markdown","id":"93b39f","input":"$x=10$ e $y=-13$\n\nO primeiro elemento do terno é ${\\rm mdc}(a,b)$\n\n","pos":7,"type":"cell"}
+{"cell_type":"markdown","id":"9965b4","input":"$a=121$, $n=224$\n\n","pos":32,"type":"cell"}
+{"cell_type":"markdown","id":"a67a09","input":"Seja $n=2^{512}+1$.\n\n(a) Considere $a=2$. Verifique se a tese do PTF é satisfeita.\n\n(b) Procure outros exemplos de bases que verifiquem a tese do teorema.\n\n(c) Mostre, usando o PTF, que o número $n$ não é primo","pos":52,"type":"cell"}
+{"cell_type":"markdown","id":"a8e37e","input":"Pretendemos verificar que $a^{n-1}$ é congruente com $1$ módulo $n$","pos":61,"type":"cell"}
+{"cell_type":"markdown","id":"afbeb2","input":"## algoritmo de Euclides estendido","pos":0,"type":"cell"}
+{"cell_type":"markdown","id":"b7ed0d","input":"## OBS.:","pos":22,"type":"cell"}
+{"cell_type":"markdown","id":"bbfc96","input":"## exercício 1n\\)\n\n","pos":8,"type":"cell"}
+{"cell_type":"markdown","id":"c88ba3","input":"<span style='font-size:x-large'>**exercício 2b\\)**</span>\n","pos":31,"type":"cell"}
+{"cell_type":"markdown","id":"c8bd08","input":"Verifique que $mdc\n(a,n)=1$ e determine $a^{-1}$, para\n\na) $a=77$; $n=100$.\n\n","pos":14,"type":"cell"}
+{"cell_type":"markdown","id":"cdab5f","input":"## alternativa","pos":72,"type":"cell"}
+{"cell_type":"markdown","id":"ce7722","input":"## exercício 3b\\)\n\n","pos":66,"type":"cell"}
+{"cell_type":"markdown","id":"d910e0","input":"# exercício 3\n\n","pos":51,"type":"cell"}
+{"cell_type":"markdown","id":"e6ba60","input":"# OBS.:","pos":60,"type":"cell"}
+{"cell_type":"markdown","id":"ec3e11","input":"Pretendemos encontrar um valor de $a$ tal que $1$<$a$<$n$ e $(a,n)=1$, mas que seja tal que $a^{n-1}\\not\\equiv 1\\ (\\!\\!\\!\\!\\mod n)$.\n\nDeste modo podemos concluir que $n$ não é primo.","pos":78,"type":"cell"}
+{"cell_type":"markdown","id":"f1af3a","input":"Pretendemos encontrar outros valores de $n$ tais que mdc$(2,n)=1$ e tais que $2^{n-1}$ seja congruente com $1$ módulo $n$.\n\nÉ claro que se $n$ for primo, então vai satisfazer a tese do PTF.\n\nProcuremos, então, $n$ não primo.\n\n","pos":67,"type":"cell"}
+{"cell_type":"markdown","id":"f37529","input":"Use o algoritmo estendido de Euclides para encontrar $x,y\\in\\ZZ$ para os quais $mdc(a,b)=ax+by$, onde $a$ e $b$ são, respetivamente,\n\n$43,33$\n\n","pos":3,"type":"cell"}
+{"id":0,"time":1739541734957,"type":"user"}
+{"last_load":1739388578827,"type":"file"}

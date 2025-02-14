@@ -1,0 +1,33 @@
+{"backend_state":"ready","connection_file":"","kernel":"sage-9.8","kernel_error":"Failed to start kernel process.","kernel_state":"idle","kernel_usage":{"cpu":0,"memory":0},"last_backend_state":1739541817283,"last_ipynb_save":1739541817269,"metadata":{"nbgrader":{"cocalc_minimal_stubs":false}},"trust":true,"type":"settings"}
+{"cell_type":"code","exec_count":0,"id":"0cca04","input":"Zn(-2)","pos":6,"state":"done","type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"1823bb","input":"Zn(2)*Zn(11)","pos":9,"state":"done","type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"2c8d18","input":"QQ","pos":26,"state":"done","type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"2d03c7","input":"latex(factor(2^4*3^2*11^3))","pos":29,"state":"done","type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"330bca","input":"power_mod(16, -1, 21)","pos":22,"state":"done","type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"34579e","input":"n","pos":3,"state":"done","type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"3c8383","input":"Zn(6)*Zn(14)","pos":12,"state":"done","type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"4d2392","input":"CC","pos":27,"state":"done","type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"518cb8","input":"Zn(19)+Zn(2)","pos":7,"state":"done","type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"521ce6","input":"1/Zn(10)","pos":17,"state":"done","type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"5b40fa","input":"[(a, 1/a) for a in invertivel]","pos":18,"state":"done","type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"5c7b4a","input":"ZZ","pos":25,"state":"done","type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"5fca25","input":"ZZ(1/a)","pos":24,"state":"done","type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"676890","input":"Zn(19)+Zn(20)","pos":5,"state":"done","type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"90360b","input":"1/Zn(2)","pos":10,"state":"done","type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"a00838","input":"Zn","pos":13,"state":"done","type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"a54445","input":"Zn(19) == Zn(-2)","pos":15,"state":"done","type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"a8bde2","input":"invertivel = [a for a in Zn if gcd(a, n) == 1]\ninvertivel","pos":14,"state":"done","type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"afdfc3","input":"1/Zn(9)","pos":11,"scrolled":true,"state":"done","type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"d08269","input":"Zn(-3)","pos":8,"state":"done","type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"d0b259","input":"Zn(-11)==Zn(10)","pos":16,"state":"done","type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"e711cf","input":"Zn = IntegerModRing(n)\nZn","pos":4,"state":"done","type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"f54048","input":"n = 21","pos":2,"state":"done","type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"f86075","input":"RR","pos":28,"state":"done","type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"f8a233","input":"a = Zn(16)\n1/a","pos":21,"state":"done","type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"f8c290","input":"power_mod??","pos":19,"state":"done","type":"cell"}
+{"cell_type":"code","id":"7bcbae","input":"n = 21\nZn = IntegerModRing(n)\nZn","pos":20,"start":1739523124607,"state":"done","type":"cell"}
+{"cell_type":"code","id":"fe62d7","input":"type(1/a)","pos":23,"start":1739523102006,"state":"done","type":"cell"}
+{"cell_type":"markdown","id":"53b621","input":"<span style='font-size:xx-large'>**aritmética modular**</span>\n","pos":0,"state":"done","type":"cell"}
+{"cell_type":"markdown","id":"d5bd79","input":"Dado $n \\in \\mathbb{N}, a \\in \\mathbb{Z}_n$, sabemos que existe inverso multiplicativo de $a$ módulo $n$ se e só se ${\\textrm m.d.c.}(a, n)=1$.\n\n","pos":1,"state":"done","type":"cell"}
+{"id":0,"time":1739541786632,"type":"user"}
+{"last_load":1739388507488,"type":"file"}
