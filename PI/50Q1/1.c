@@ -17,5 +17,5 @@ int main(){
             }
         }
     }
-    printf("The large");
+    printf("The large: %d \n",maior);
 }
