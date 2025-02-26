@@ -15,10 +15,10 @@ class Incrementer  extends Thread{
 
 class Counter{
     private int c;
-    public void increment(){
+    public synchronized  void increment(){
         c++;
     }
-    public int value(){
+    public synchronized int value(){
         return c;
     }
 }
