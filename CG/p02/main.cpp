@@ -6,12 +6,17 @@
 #endif
 
 #include <math.h>
+#include <vector>
 
 // Global variables for transformations
 float translateX = 0.0f, translateY = 0.0f, translateZ = 0.0f;
 float rotateAngleX = 0.0f, rotateAngleY = 0.0f, rotateAngleZ = 0.0f;
 float scaleX = 1.0f, scaleY = 1.0f, scaleZ = 1.0f;
 float colorR = 1.0f, colorG = 1.0f, colorB = 1.0f;
+
+// Global variables for VBOs
+GLuint pyramidVBO, pyramidColorVBO;
+GLuint baseVBO, baseColorVBO;
 
 void changeSize(int w, int h) {
     if(h == 0)
@@ -22,6 +27,79 @@ void changeSize(int w, int h) {
     glViewport(0, 0, w, h);
     gluPerspective(45.0f ,ratio, 1.0f ,1000.0f);
     glMatrixMode(GL_MODELVIEW);
+}
+
+void setupVBOs() {
+    // Pyramid vertices (excluding base)
+    std::vector<float> pyramidVertices = {
+        // Front face
+        0.0f, 1.0f, 0.0f,
+        -0.5f, 0.0f, 0.5f,
+        0.5f, 0.0f, 0.5f,
+        // Right face
+        0.0f, 1.0f, 0.0f,
+        0.5f, 0.0f, 0.5f,
+        0.5f, 0.0f, -0.5f,
+        // Back face
+        0.0f, 1.0f, 0.0f,
+        0.5f, 0.0f, -0.5f,
+        -0.5f, 0.0f, -0.5f,
+        // Left face
+        0.0f, 1.0f, 0.0f,
+        -0.5f, 0.0f, -0.5f,
+        -0.5f, 0.0f, 0.5f
+    };
+
+    std::vector<float> pyramidColors = {
+        // Front face (Red)
+        1.0f, 0.0f, 0.0f,
+        1.0f, 0.0f, 0.0f,
+        1.0f, 0.0f, 0.0f,
+        // Right face (Green)
+        0.0f, 1.0f, 0.0f,
+        0.0f, 1.0f, 0.0f,
+        0.0f, 1.0f, 0.0f,
+        // Back face (Blue)
+        0.0f, 0.0f, 1.0f,
+        0.0f, 0.0f, 1.0f,
+        0.0f, 0.0f, 1.0f,
+        // Left face (Yellow)
+        1.0f, 1.0f, 0.0f,
+        1.0f, 1.0f, 0.0f,
+        1.0f, 1.0f, 0.0f
+    };
+
+    // Base vertices
+    std::vector<float> baseVertices = {
+        -0.5f, 0.0f, 0.5f,
+        0.5f, 0.0f, -0.5f,
+        -0.5f, 0.0f, -0.5f,
+        -0.5f, 0.0f, 0.5f,
+        0.5f, 0.0f, 0.5f,
+        0.5f, 0.0f, -0.5f
+    };
+
+    std::vector<float> baseColors(18, 0.5f); // 6 vertices * 3 components, all grey
+
+    // Create and bind pyramid VBO
+    glGenBuffers(1, &pyramidVBO);
+    glBindBuffer(GL_ARRAY_BUFFER, pyramidVBO);
+    glBufferData(GL_ARRAY_BUFFER, pyramidVertices.size() * sizeof(float), pyramidVertices.data(), GL_STATIC_DRAW);
+
+    // Create and bind pyramid color VBO
+    glGenBuffers(1, &pyramidColorVBO);
+    glBindBuffer(GL_ARRAY_BUFFER, pyramidColorVBO);
+    glBufferData(GL_ARRAY_BUFFER, pyramidColors.size() * sizeof(float), pyramidColors.data(), GL_STATIC_DRAW);
+
+    // Create and bind base VBO
+    glGenBuffers(1, &baseVBO);
+    glBindBuffer(GL_ARRAY_BUFFER, baseVBO);
+    glBufferData(GL_ARRAY_BUFFER, baseVertices.size() * sizeof(float), baseVertices.data(), GL_STATIC_DRAW);
+
+    // Create and bind base color VBO
+    glGenBuffers(1, &baseColorVBO);
+    glBindBuffer(GL_ARRAY_BUFFER, baseColorVBO);
+    glBufferData(GL_ARRAY_BUFFER, baseColors.size() * sizeof(float), baseColors.data(), GL_STATIC_DRAW);
 }
 
 void renderScene(void) {
@@ -56,42 +134,27 @@ void renderScene(void) {
     glRotatef(rotateAngleY, 0.0f, 1.0f, 0.0f);
     glRotatef(rotateAngleZ, 0.0f, 0.0f, 1.0f);
     glScalef(scaleX, scaleY, scaleZ);
-    glColor3f(colorR, colorG, colorB);
 
-    // Draw pyramid
-    glBegin(GL_TRIANGLES);
-    // Front face
-    glColor3f(1.0f, 0.0f, 0.0f);
-    glVertex3f(0.0f, 1.0f, 0.0f);
-    glVertex3f(-0.5f, 0.0f, 0.5f);
-    glVertex3f(0.5f, 0.0f, 0.5f);
-    // Right face
-    glColor3f(0.0f, 1.0f, 0.0f);
-    glVertex3f(0.0f, 1.0f, 0.0f);
-    glVertex3f(0.5f, 0.0f, 0.5f);
-    glVertex3f(0.5f, 0.0f, -0.5f);
-    // Back face
-    glColor3f(0.0f, 0.0f, 1.0f);
-    glVertex3f(0.0f, 1.0f, 0.0f);
-    glVertex3f(0.5f, 0.0f, -0.5f);
-    glVertex3f(-0.5f, 0.0f, -0.5f);
-    // Left face
-    glColor3f(1.0f, 1.0f, 0.0f);
-    glVertex3f(0.0f, 1.0f, 0.0f);
-    glVertex3f(-0.5f, 0.0f, -0.5f);
-    glVertex3f(-0.5f, 0.0f, 0.5f);
-    glEnd();
+    // Draw pyramid faces
+    glEnableClientState(GL_VERTEX_ARRAY);
+    glEnableClientState(GL_COLOR_ARRAY);
 
-    // Draw Filled Base (Two Triangles)
-    glBegin(GL_TRIANGLES);
-    glColor3f(0.5f, 0.5f, 0.5f); // Grey base
-    glVertex3f(-0.5f, 0.0f, 0.5f);
-    glVertex3f(0.5f, 0.0f, -0.5f);
-    glVertex3f(-0.5f, 0.0f, -0.5f);
-    glVertex3f(-0.5f, 0.0f, 0.5f);
-    glVertex3f(0.5f, 0.0f, 0.5f);
-    glVertex3f(0.5f, 0.0f, -0.5f);
-    glEnd();
+    // Draw pyramid sides
+    glBindBuffer(GL_ARRAY_BUFFER, pyramidVBO);
+    glVertexPointer(3, GL_FLOAT, 0, 0);
+    glBindBuffer(GL_ARRAY_BUFFER, pyramidColorVBO);
+    glColorPointer(3, GL_FLOAT, 0, 0);
+    glDrawArrays(GL_TRIANGLES, 0, 12);
+
+    // Draw base
+    glBindBuffer(GL_ARRAY_BUFFER, baseVBO);
+    glVertexPointer(3, GL_FLOAT, 0, 0);
+    glBindBuffer(GL_ARRAY_BUFFER, baseColorVBO);
+    glColorPointer(3, GL_FLOAT, 0, 0);
+    glDrawArrays(GL_TRIANGLES, 0, 6);
+
+    glDisableClientState(GL_VERTEX_ARRAY);
+    glDisableClientState(GL_COLOR_ARRAY);
 
     glPopMatrix();
 
@@ -136,6 +199,8 @@ int main(int argc, char **argv) {
 
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_CULL_FACE);
+
+    setupVBOs(); // Add this line to initialize VBOs
 
     glutMainLoop();
 
