@@ -1,0 +1,3 @@
+/Users/diogokeeper12/Documents/GitHub/LCCCode/CG/p06/build/CMakeFiles/class4.dir
+/Users/diogokeeper12/Documents/GitHub/LCCCode/CG/p06/build/CMakeFiles/edit_cache.dir
+/Users/diogokeeper12/Documents/GitHub/LCCCode/CG/p06/build/CMakeFiles/rebuild_cache.dir

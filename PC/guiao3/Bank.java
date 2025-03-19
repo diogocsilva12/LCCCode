@@ -1,4 +1,6 @@
 import java.util.*;
+import java.util.concurrent.locks.ReentrantLock;
+import java.util.concurrent.locks.Lock;
 
 class Bank {
 
@@ -20,22 +22,40 @@ class Bank {
 
     private Map<Integer, Account> map = new HashMap<Integer, Account>();
     private int nextId = 0;
+    private Lock l = new ReentrantLock();
 
     // create account and return account id
     public int createAccount(int balance) {
         Account c = new Account(balance);
-        int id = nextId;
-        nextId += 1;
-        map.put(id, c);
-        return id;
+        l.lock();
+        try {
+            int id = nextId;
+            nextId += 1;
+            map.put(id, c);
+            return id;
+        } finally {
+            l.unlock();
+        }
     }
 
     // close account and return balance, or 0 if no such account
     public int closeAccount(int id) {
-        Account c = map.remove(id);
-        if (c == null)
-            return 0;
-        return c.balance();
+        Account c;
+        l.lock();
+        try {
+            Account c = map.remove(id);
+            if (c == null)
+                return 0;
+            c.l.lock();
+        } finally {
+            l.unlock();
+        }
+        try {
+            return c.balance();
+        } finally {
+            c.l.unlock();
+        }
+        
     }
 
     // account balance; 0 if no such account
@@ -65,12 +85,17 @@ class Bank {
     // transfer value between accounts;
     // fails if either account does not exist or insufficient balance
     public boolean transfer(int from, int to, int value) {
-        Account cfrom, cto;
-        cfrom = map.get(from);
-        cto = map.get(to);
-        if (cfrom == null || cto ==  null)
-            return false;
-        return cfrom.withdraw(value) && cto.deposit(value);
+        Account cfrom = map.get(from);
+        Account cto = map.get(to);
+        l.lock();
+        try {
+            
+            if (cfrom == null || cto == null)
+                return false;
+            return cfrom.withdraw(value) && cto.deposit(value);
+        } finally {
+            l.unlock();
+        }
     }
 
     // sum of balances in set of accounts; 0 if some does not exist
