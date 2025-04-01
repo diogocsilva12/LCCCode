@@ -44,10 +44,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /Applications/CMake.app/Contents/bin/cmake
+CMAKE_COMMAND = /opt/homebrew/bin/cmake
 
 # The command to remove a file.
-RM = /Applications/CMake.app/Contents/bin/cmake -E rm -f
+RM = /opt/homebrew/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -76,15 +76,15 @@ CMakeFiles/class4.dir/main.cpp.o: CMakeFiles/class4.dir/flags.make
 CMakeFiles/class4.dir/main.cpp.o: /Users/diogokeeper12/Documents/GitHub/LCCCode/CG/p06/main.cpp
 CMakeFiles/class4.dir/main.cpp.o: CMakeFiles/class4.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/diogokeeper12/Documents/GitHub/LCCCode/CG/p06/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/class4.dir/main.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/class4.dir/main.cpp.o -MF CMakeFiles/class4.dir/main.cpp.o.d -o CMakeFiles/class4.dir/main.cpp.o -c /Users/diogokeeper12/Documents/GitHub/LCCCode/CG/p06/main.cpp
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/class4.dir/main.cpp.o -MF CMakeFiles/class4.dir/main.cpp.o.d -o CMakeFiles/class4.dir/main.cpp.o -c /Users/diogokeeper12/Documents/GitHub/LCCCode/CG/p06/main.cpp
 
 CMakeFiles/class4.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/class4.dir/main.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/diogokeeper12/Documents/GitHub/LCCCode/CG/p06/main.cpp > CMakeFiles/class4.dir/main.cpp.i
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/diogokeeper12/Documents/GitHub/LCCCode/CG/p06/main.cpp > CMakeFiles/class4.dir/main.cpp.i
 
 CMakeFiles/class4.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/class4.dir/main.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/diogokeeper12/Documents/GitHub/LCCCode/CG/p06/main.cpp -o CMakeFiles/class4.dir/main.cpp.s
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/diogokeeper12/Documents/GitHub/LCCCode/CG/p06/main.cpp -o CMakeFiles/class4.dir/main.cpp.s
 
 # Object files for target class4
 class4_OBJECTS = \

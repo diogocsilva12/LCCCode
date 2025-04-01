@@ -37,6 +37,13 @@ float camX, camY, camZ;
 float angleRI = 0.0f;  // Ângulo para teapots externos
 float angleRC = 0.0f;  // Ângulo para teapots internos
 
+// Add these global variables for first-person camera
+bool firstPersonMode = false;  // Toggle between orbital and first-person camera
+float fpX = 0.0f, fpY = 0.0f, fpZ = 50.0f;  // First person camera position
+float fpLookX = 0.0f, fpLookZ = -1.0f;  // Looking direction (initially looking along -Z)
+float fpAngle = 0.0f;  // Current rotation angle of the camera
+float moveSpeed = 0.5f;  // Movement speed
+
 void spherical2Cartesian() {
     camX = radius * cos(beta) * sin(alfa);
     camY = radius * sin(beta);
@@ -118,7 +125,7 @@ void drawTeapots() {
         float z = RI * sin(angle);
         
         glPushMatrix();
-        glTranslatef(x, 2.0f, z);
+        glTranslatef(x, getWorldHeight(x, z) + 2.0f, z); // +2.0f to float above terrain
         glRotatef((-angle * 180.0f/M_PI), 0.0f, 1.0f, 0.0f);
         glColor3f(0.8f, 0.1f, 0.1f);  // Vermelho escuro
         glutSolidTeapot(2.0f);
@@ -136,7 +143,7 @@ void drawTeapots() {
         float z = RC * sin(angle);
         
         glPushMatrix();
-        glTranslatef(x, 2.0f, z);
+        glTranslatef(x, getWorldHeight(x, z) + 2.0f, z);
         glRotatef((-angle * 180.0f/M_PI) + 180.0f, 0.0f, 1.0f, 0.0f);
         glColor3f(0.1f, 0.1f, 0.8f);  // Azul escuro
         glutSolidTeapot(1.5f);
@@ -159,8 +166,8 @@ void drawTeapots() {
 // Adicione após as outras definições
 void drawCentralTorus() {
     glPushMatrix();
-    //glTranslatef(0.0f, 2.0f, 0.0f);  // Posição acima do plano
-    //glRotatef(90.0f, 1.0f, 0.0f, 0.0f);  // Rotação para ficar paralelo ao plano
+    float centerHeight = getWorldHeight(0.0f, 0.0f);
+    glTranslatef(0.0f, centerHeight + 2.0f, 0.0f); // Position above the terrain
 	glColor3f(1.0f, 0.4f, 0.7f);  // Cor rosa
     
     // Parâmetros do torus
@@ -218,13 +225,45 @@ float getHeight(int x, int z) {
     return (heightValue / 255.0f) * HEIGHT_SCALE;
 }
 
+
+// Function to get height at any arbitrary point using bilinear interpolation
+float hf(float px, float pz) {
+    // Convert world coordinates to image coordinates
+    float imagePx = ((px + 100.0f) / 200.0f) * (imageWidth - 1);
+    float imagePz = ((pz + 100.0f) / 200.0f) * (imageHeight - 1);
+    
+    // Get grid cell coordinates
+    int x1 = floor(imagePx);
+    int z1 = floor(imagePz);
+    int x2 = x1 + 1;
+    int z2 = z1 + 1;
+    
+    // Check boundaries
+    if (x2 >= imageWidth) x2 = imageWidth - 1;
+    if (z2 >= imageHeight) z2 = imageHeight - 1;
+    
+    // Calculate fractional parts
+    float fx = imagePx - x1;
+    float fz = imagePz - z1;
+    
+    // Get heights at the 4 corners of the grid cell
+    float h_x1_z1 = getHeight(x1, z1);
+    float h_x1_z2 = getHeight(x1, z2);
+    float h_x2_z1 = getHeight(x2, z1);
+    float h_x2_z2 = getHeight(x2, z2);
+    
+    // Interpolate along z
+    float h_x1_z = h_x1_z1 * (1.0f - fz) + h_x1_z2 * fz;
+    float h_x2_z = h_x2_z1 * (1.0f - fz) + h_x2_z2 * fz;
+    
+    // Interpolate along x
+    return h_x1_z * (1.0f - fx) + h_x2_z * fx;
+}
+
+
 // Função para obter a altura em coordenadas do mundo
 float getWorldHeight(float worldX, float worldZ) {
-    // Converte coordenadas do mundo para coordenadas da imagem
-    int imageX = ((worldX + 100.0f) / 200.0f) * (imageWidth - 1);
-    int imageZ = ((worldZ + 100.0f) / 200.0f) * (imageHeight - 1);
-    
-    return getHeight(imageX, imageZ);
+    return hf(worldX, worldZ);
 }
 
 void drawTerrain() {
@@ -291,17 +330,30 @@ void changeSize(int w, int h) {
 
 
 
-// Modifique a chamada em renderScene
+// Update renderScene to use the first-person camera when in that mode
 void renderScene(void) {
     // clear buffers
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     // set the camera
     glLoadIdentity();
-    gluLookAt(camX, camY, camZ,
-        0.0, 0.0, 0.0,
-        0.0f, 1.0f, 0.0f);
-                
+    
+    if (firstPersonMode) {
+        // Use first-person camera
+        gluLookAt(
+            fpX, fpY, fpZ,                      // Camera position
+            fpX + fpLookX, fpY, fpZ + fpLookZ,  // Look at point
+            0.0f, 1.0f, 0.0f                    // Up vector
+        );
+    } else {
+        // Use orbital camera
+        gluLookAt(
+            camX, camY, camZ,
+            0.0, 0.0, 0.0,
+            0.0f, 1.0f, 0.0f
+        );
+    }
+            
     // Desenha o terreno
     drawTerrain();
     
@@ -317,65 +369,128 @@ void renderScene(void) {
     glutSwapBuffers();
 }
 
-
+// Update special keys function to handle camera rotation in first person mode
 void processSpecialKeys(int key, int xx, int yy) {
+    if (firstPersonMode) {
+        switch (key) {
+            case GLUT_KEY_RIGHT: // Look right
+                fpAngle -= 0.05f;
+                fpLookX = sin(fpAngle);
+                fpLookZ = -cos(fpAngle);
+                break;
+                
+            case GLUT_KEY_LEFT: // Look left
+                fpAngle += 0.05f;
+                fpLookX = sin(fpAngle);
+                fpLookZ = -cos(fpAngle);
+                break;
+        }
+    } else {
+        // Original orbital camera controls
+        switch (key) {
+            case GLUT_KEY_RIGHT:
+                alfa -= 0.1; 
+                break;
 
-	switch (key) {
+            case GLUT_KEY_LEFT:
+                alfa += 0.1; 
+                break;
 
-	case GLUT_KEY_RIGHT:
-		alfa -= 0.1; break;
+            case GLUT_KEY_UP:
+                beta += 0.1f;
+                if (beta > 1.5f)
+                    beta = 1.5f;
+                break;
 
-	case GLUT_KEY_LEFT:
-		alfa += 0.1; break;
+            case GLUT_KEY_DOWN:
+                beta -= 0.1f;
+                if (beta < -1.5f)
+                    beta = -1.5f;
+                break;
 
-	case GLUT_KEY_UP:
-		beta += 0.1f;
-		if (beta > 1.5f)
-			beta = 1.5f;
-		break;
+            case GLUT_KEY_PAGE_DOWN: 
+                radius -= 1.0f;
+                if (radius < 1.0f)
+                    radius = 1.0f;
+                break;
 
-	case GLUT_KEY_DOWN:
-		beta -= 0.1f;
-		if (beta < -1.5f)
-			beta = -1.5f;
-		break;
-
-	case GLUT_KEY_PAGE_DOWN: radius -= 1.0f;
-		if (radius < 1.0f)
-			radius = 1.0f;
-		break;
-
-	case GLUT_KEY_PAGE_UP: radius += 1.0f; break;
-	}
-	spherical2Cartesian();
-	glutPostRedisplay();
+            case GLUT_KEY_PAGE_UP: 
+                radius += 1.0f; 
+                break;
+        }
+        spherical2Cartesian();
+    }
+    glutPostRedisplay();
 }
 
+// Update processKeys function to toggle camera mode and handle first-person movement
 void processKeys(unsigned char c, int xx, int yy) {
-
     switch (c) {
         case 'o': // Zoom in
-            radius -= 5.0f; // Increased from 1.0f to 5.0f
+            radius -= 5.0f;
             if (radius < 1.0f)
                 radius = 1.0f;
             break;
 
         case 'p': // Zoom out
-            radius += 5.0f; // Increased from 1.0f to 5.0f
+            radius += 5.0f;
+            break;
+            
+        // Toggle between camera modes
+        case 'c':
+            firstPersonMode = !firstPersonMode;
+            break;
+            
+        // First person camera controls
+        case 'w': // Move forward
+            if (firstPersonMode) {
+                // Calculate forward vector
+                fpX += fpLookX * moveSpeed;
+                fpZ += fpLookZ * moveSpeed;
+                // Update Y position to follow terrain
+                fpY = getWorldHeight(fpX, fpZ) + 5.0f; // 5.0f is camera height above terrain
+            }
+            break;
+            
+        case 's': // Move backward
+            if (firstPersonMode) {
+                // Calculate backward vector
+                fpX -= fpLookX * moveSpeed;
+                fpZ -= fpLookZ * moveSpeed;
+                // Update Y position to follow terrain
+                fpY = getWorldHeight(fpX, fpZ) + 5.0f;
+            }
+            break;
+            
+        case 'a': // Strafe left
+            if (firstPersonMode) {
+                // Calculate left vector (perpendicular to look direction)
+                float leftX = -fpLookZ;  // Cross product with up vector (0,1,0)
+                float leftZ = fpLookX;
+                
+                fpX += leftX * moveSpeed;
+                fpZ += leftZ * moveSpeed;
+                // Update Y position to follow terrain
+                fpY = getWorldHeight(fpX, fpZ) + 5.0f;
+            }
+            break;
+            
+        case 'd': // Strafe right
+            if (firstPersonMode) {
+                // Calculate right vector
+                float rightX = fpLookZ;
+                float rightZ = -fpLookX;
+                
+                fpX += rightX * moveSpeed;
+                fpZ += rightZ * moveSpeed;
+                // Update Y position to follow terrain
+                fpY = getWorldHeight(fpX, fpZ) + 5.0f;
+            }
             break;
     }
+    
     spherical2Cartesian();
     glutPostRedisplay();
-}
-
-void printInfo() {
-
-	printf("Vendor: %s\n", glGetString(GL_VENDOR));
-	printf("Renderer: %s\n", glGetString(GL_RENDERER));
-	printf("Version: %s\n", glGetString(GL_VERSION));
-
-	printf("\nUse Arrows to move the camera up/down and left/right\n");
-	printf("PgUp and PgDown control the distance from the camera to the origin\n");
 }
 
 
@@ -414,7 +529,7 @@ int main(int argc, char **argv) {
     generateClareira(RADIUS);  // Cria uma clareira com raio específico
     
     spherical2Cartesian();
-    printInfo();
+    
 
     // enter GLUT's main cycle
     glutMainLoop();

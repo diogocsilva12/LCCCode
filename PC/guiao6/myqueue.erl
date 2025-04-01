@@ -4,6 +4,7 @@
 create()-> [].
 
 enqueue(Q,Item)-> Q ++ [Item].
+%enqueue(Q,Item)-> [Item|Q]. -> nao presta
 
 dequeue([]) -> empty;
 dequeue([Head|Tail]) -> {Tail, Head}.
